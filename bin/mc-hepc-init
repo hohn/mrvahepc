@@ -54,7 +54,7 @@ def process_db_file(zip_path, db_collection_dir):
         owner                  = source_location_prefix.parent.name
         cid                    = generate_cid(cli_version, creation_time, primary_language, sha)
         new_db_fname           = f"{owner}-{repo}-ctsj-{cid}.zip"
-        result_url             = f"http://hepc/{db_collection_dir}/{new_db_fname}"
+        result_url             = f"http://hepc/db/{db_collection_dir}/{new_db_fname}"
 
         metadata = {
             "git_branch"             : "HEAD",
@@ -83,18 +83,23 @@ def process_db_file(zip_path, db_collection_dir):
         rm("-rf", temp_dir)
 
 # Main application class
-class DBProcessor(cli.Application):
+class HEPC(cli.Application):
     """
-    DBProcessor processes db.zip files found in a starting directory,
+    HEPC processes db.zip files found in a starting directory,
     copies updated names in a collection directory,
     and adds a metadata information file "metadata.json" to the directory.
     """
 
     db_collection_dir = cli.SwitchAttr(
-        "--db_collection_dir", str, mandatory=True, help="Specify the database collection directory"
+        "--db_collection_dir", str, mandatory=True,
+        help="Specify the database collection directory"
     )
     starting_path = cli.SwitchAttr(
         "--starting_path", str, mandatory=True, help="Specify the starting path"
+    )
+    max_dbs = cli.SwitchAttr(
+        "--max_dbs", int, mandatory=False, default=100,
+        help="Specify the maximum number of databases to ingest"
     )
 
     def main(self):
@@ -111,10 +116,10 @@ class DBProcessor(cli.Application):
             log("WARN", "No db.zip files found in the specified starting path.")
             return
 
-        for zip_path in db_files:
+        for zip_path in db_files[0:self.max_dbs]:
             process_db_file(zip_path, db_collection_dir)
 
         log("INFO", "Processing completed.")
 
 if __name__ == "__main__":
-    DBProcessor.run()
+    HEPC.run()

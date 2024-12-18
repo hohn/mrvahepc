@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 db_dir = None  # This will be set by the CLI application
 
-@app.get("/{file_path:path}")
+@app.get("/db/{file_path:path}")
 def serve_file(file_path: str):
     """
     Serve files from the database directory, such as .zip files or metadata.json.
@@ -59,7 +59,7 @@ class MRVAHepc(cli.Application):
     2. Metadata for those zip files, contained in metadata.json in the same
        directory.
     The HTTP endpoints are:
-    1. /{filename}
+    1. /db/{filename}
     2. /index
     3. /api/v1/latest_results/codeql-all
     """

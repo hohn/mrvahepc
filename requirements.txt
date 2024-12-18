@@ -10,8 +10,6 @@ idna==3.10
 ipython==8.30.0
 jedi==0.19.2
 matplotlib-inline==0.1.7
-# Editable Git install with no remote (mrvahepc==0.1.0)
--e /Users/hohn/work-gh/mrva/mrvahepc
 parso==0.8.4
 pexpect==4.9.0
 plumbum==1.9.0

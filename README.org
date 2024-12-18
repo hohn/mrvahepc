@@ -2,9 +2,10 @@
 ** Usage Sample
   #+BEGIN_SRC sh 
     # Collect DBs from filesystem
-    cd ~/work-gh/mrva/mrvahepc
+    cd ~/work-gh/mrva/mrvahepc && rm -fR db-collection.tmp/
     ./bin/mc-hepc-init --db_collection_dir db-collection.tmp \
-                       --starting_path ~/work-gh/mrva/mrva-open-source-download
+                       --starting_path ~/work-gh/mrva/mrva-open-source-download \
+                       --max_dbs 17
 
     # Serve collected DBs plus metadata
     ./bin/mc-hepc-serve --codeql-db-dir db-collection.tmp
@@ -17,10 +18,10 @@
 
     url=$(curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
                -o - 2>/dev/null | head -1 | jq -r .result_url)
-    # http://hepc/db-collection.tmp/aircrack-ng-aircrack-ng-ctsj-41ebbe.zip
+    echo $url
+    # http://hepc/db/db-collection.tmp/aircrack-ng-aircrack-ng-ctsj-41ebbe.zip
 
     wget $(echo $url|sed 's|http://hepc|http://127.0.0.1:8070|g;') 
-
 
   #+END_SRC
 
@@ -34,8 +35,6 @@
 
        # From requirements.txt
        pip install -r requirements.txt
-       # Or explicitly
-       pip install ipython
      #+end_example
 
    - Local development
@@ -47,7 +46,6 @@
      The `--editable` *should* use symlinks for all scripts; use `./bin/*` to be sure.
 
    - Full installation
-
      #+begin_example
      pip install mrvahepc
      #+end_example
