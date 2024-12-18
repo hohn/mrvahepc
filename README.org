@@ -1,0 +1,59 @@
+* Introduction to hepc -- HTTP End Point for CodeQL
+** Usage Sample
+  #+BEGIN_SRC sh 
+    # Collect DBs from filesystem
+    cd ~/work-gh/mrva/mrvahepc
+    ./bin/mc-hepc-init --db_collection_dir db-collection.tmp \
+                       --starting_path ~/work-gh/mrva/mrva-open-source-download
+
+    # Serve collected DBs plus metadata
+    ./bin/mc-hepc-serve --codeql-db-dir db-collection.tmp
+
+    # Test server
+    curl 127.0.0.1:8070/index -o - 2>/dev/null | wc -l
+
+    curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
+         -o - 2>/dev/null | wc -l
+
+    url=$(curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
+               -o - 2>/dev/null | head -1 | jq -r .result_url)
+    # http://hepc/db-collection.tmp/aircrack-ng-aircrack-ng-ctsj-41ebbe.zip
+
+    wget $(echo $url|sed 's|http://hepc|http://127.0.0.1:8070|g;') 
+
+
+  #+END_SRC
+
+** Installation
+   - Set up the virtual environment and install tools
+     #+begin_example
+       cd ~/work-gh/mrva/mrvahepc
+       python3.11 -m venv venv
+       source venv/bin/activate
+       pip install --upgrade pip
+
+       # From requirements.txt
+       pip install -r requirements.txt
+       # Or explicitly
+       pip install ipython
+     #+end_example
+
+   - Local development
+     #+begin_example
+       cd ~/work-gh/mrva/mrvahepc
+       source venv/bin/activate
+       pip install --editable .
+     #+end_example
+     The `--editable` *should* use symlinks for all scripts; use `./bin/*` to be sure.
+
+   - Full installation
+
+     #+begin_example
+     pip install mrvahepc
+     #+end_example
+
+** Use as library
+   The best way to examine the code is starting from the high-level scripts
+   in =bin/=.
+
+
