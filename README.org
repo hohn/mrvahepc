@@ -1,29 +1,31 @@
 * Introduction to hepc -- HTTP End Point for CodeQL
 ** Usage Sample
   #+BEGIN_SRC sh 
-        # Collect DBs from filesystem
-        cd ~/work-gh/mrva/mrvahepc && rm -fR db-collection.tmp/
-        ./bin/mc-hepc-init --db_collection_dir db-collection.tmp \
-                           --starting_path ~/work-gh/mrva/mrva-open-source-download \
-                           --max_dbs 17
+    # Collect DBs from filesystem
+    cd ~/work-gh/mrva/mrvahepc && rm -fR db-collection.tmp/
+    export MRVA_HEPC_ENDPOINT=http://hepc
+    ./bin/mc-hepc-init --db_collection_dir db-collection.tmp \
+                       --starting_path ~/work-gh/mrva/mrva-open-source-download \
+                       --max_dbs 17
 
-        # Serve collected DBs plus metadata
-        cd ~/work-gh/mrva/mrvahepc 
-        . venv/bin/activate
-        ./bin/mc-hepc-serve --codeql-db-dir db-collection.tmp
+    # Serve collected DBs plus metadata
+    cd ~/work-gh/mrva/mrvahepc 
+    . venv/bin/activate
 
-        # Test server
-        curl 127.0.0.1:8070/index -o - 2>/dev/null | wc -l
+    ./bin/mc-hepc-serve --codeql-db-dir db-collection.tmp
 
-        curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
-             -o - 2>/dev/null | wc -l
+    # Test server
+    curl 127.0.0.1:8070/index -o - 2>/dev/null | wc -l
 
-        url=$(curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
-                   -o - 2>/dev/null | head -1 | jq -r .result_url)
-        echo $url
-        # http://hepc/db/db-collection.tmp/aircrack-ng-aircrack-ng-ctsj-41ebbe.zip
+    curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
+         -o - 2>/dev/null | wc -l
 
-        wget $(echo $url|sed 's|http://hepc|http://127.0.0.1:8070|g;') 
+    url=$(curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
+               -o - 2>/dev/null | head -1 | jq -r .result_url)
+    echo $url
+    # http://hepc/db/db-collection.tmp/aircrack-ng-aircrack-ng-ctsj-41ebbe.zip
+
+    wget $(echo $url|sed 's|http://hepc|http://127.0.0.1:8070|g;') 
 
   #+END_SRC
 

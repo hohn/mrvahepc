@@ -52,10 +52,15 @@ def process_db_file(zip_path, db_collection_dir):
         source_location_prefix = local.path(yaml_data["sourceLocationPrefix"])
         repo                   = source_location_prefix.name
         owner                  = source_location_prefix.parent.name
-        cid                    = generate_cid(cli_version, creation_time, primary_language, sha)
+        cid = generate_cid(cli_version, creation_time, primary_language, sha)
         new_db_fname           = f"{owner}-{repo}-ctsj-{cid}.zip"
-        result_url             = f"http://hepc/db/{db_collection_dir}/{new_db_fname}"
-
+        hepc_endpoint          = os.getenv("MRVA_HEPC_ENDPOINT")
+        if hepc_endpoint is None:
+            log("WARN", "Environment variable 'MRVA_HEPC_ENDPOINT' is not set."
+                "Using default 'http://hepc'.")
+            hepc_endpoint = "http://hepc"
+        result_url   = f"{hepc_endpoint}/db/{db_collection_dir}/{new_db_fname}"
+        
         metadata = {
             "git_branch"             : "HEAD",
             "git_commit_id"          : sha,
