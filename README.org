@@ -1,17 +1,18 @@
 * Introduction to hepc -- HTTP End Point for CodeQL
 ** Usage Sample
   #+BEGIN_SRC sh 
+    cd ~/work-gh/mrva/mrvahepc 
+    uv sync  # one-time install; uv-run shebangs avoid manual activation
+
     # Collect DBs from filesystem
     cd ~/work-gh/mrva/mrvahepc && rm -fR db-collection.tmp/
     export MRVA_HEPC_ENDPOINT=http://hepc
     ./bin/mc-hepc-init --db_collection_dir db-collection.tmp \
-                       --starting_path ~/work-gh/mrva/mrva-open-source-download \
+                       --starting_path ~/work-gh/mrva/mrva-open-source-download/ \
                        --max_dbs 17
 
     # Serve collected DBs plus metadata
     cd ~/work-gh/mrva/mrvahepc 
-    . venv/bin/activate
-
     ./bin/mc-hepc-serve --codeql-db-dir db-collection.tmp
 
     # Test server
@@ -30,24 +31,23 @@
   #+END_SRC
 
 ** Installation
-   - Set up the virtual environment and install tools
+   - Use [[https://docs.astral.sh/uv/][uv]] to install dependencies without manually activating a venv
      #+begin_example
        cd ~/work-gh/mrva/mrvahepc
-       python3.11 -m venv venv
-       source venv/bin/activate
-       pip install --upgrade pip
-
-       # From requirements.txt
-       pip install -r requirements.txt
+       uv sync
      #+end_example
+     =uv sync= installs everything declared in =pyproject.toml= into a managed
+     =.venv= and caches the wheels; the =bin/= scripts already use
+     =uv run= in their shebangs, so you can execute them directly.
 
    - Local development
      #+begin_example
        cd ~/work-gh/mrva/mrvahepc
-       source venv/bin/activate
-       pip install --editable .
+       uv sync
+       uv pip install --editable .
      #+end_example
-     The `--editable` *should* use symlinks for all scripts; use `./bin/*` to be sure.
+     The =--editable= install is optional; use =./bin/*= directly to avoid
+     relying on entry points in your shell.
 
    - Full installation
      #+begin_example
@@ -58,4 +58,4 @@
    The best way to examine the code is starting from the high-level scripts
    in =bin/=.
 
-
+   
