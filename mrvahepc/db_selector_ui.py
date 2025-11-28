@@ -12,6 +12,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox, scrolledtext
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional
+import re
 
 
 class DatabaseSelector:
@@ -33,6 +34,11 @@ class DatabaseSelector:
         # Storage for dropdown widgets and their values
         self.dropdowns: Dict[str, ttk.Combobox] = {}
         self.dropdown_vars: Dict[str, tk.StringVar] = {}
+        self.regex_entries: Dict[str, ttk.Entry] = {}
+        self.regex_vars: Dict[str, tk.StringVar] = {}
+        
+        # Storage for all available values per column (for regex filtering)
+        self.all_values: Dict[str, List[str]] = {}
         
         # Initialize database connection
         self.conn = None
@@ -41,6 +47,7 @@ class DatabaseSelector:
         # Create UI components
         self._create_widgets()
         self._populate_dropdowns()
+        self._initialize_regex_placeholders()
         self._bind_events()
         
         # Initial display of all records
@@ -72,30 +79,43 @@ class DatabaseSelector:
         header_frame = ttk.LabelFrame(main_frame, text="Filter Options", padding="10")
         header_frame.grid(row=0, column=0, sticky=(tk.W, tk.E), pady=(0, 10))
         
-        # Create dropdowns in a grid layout (4 columns for better fit)
+        # Create dropdowns in a grid layout (3 columns for better fit with regex entries)
         for i, column in enumerate(self.columns):
-            row = i // 4
-            col = i % 4
+            row = i // 3
+            col = i % 3
             
             # Column label
             label = ttk.Label(header_frame, text=column.replace('_', ' ').title())
-            label.grid(row=row*2, column=col, sticky=tk.W, padx=(0, 10), pady=(0, 2))
+            label.grid(row=row*3, column=col, sticky=tk.W, padx=(0, 10), pady=(0, 2))
             
             # Dropdown combobox
             var = tk.StringVar()
-            combobox = ttk.Combobox(header_frame, textvariable=var, state="readonly", width=20)
-            combobox.grid(row=row*2+1, column=col, sticky=(tk.W, tk.E), padx=(0, 10), pady=(0, 10))
+            combobox = ttk.Combobox(header_frame, textvariable=var, state="readonly", width=25)
+            combobox.grid(row=row*3+1, column=col, sticky=(tk.W, tk.E), padx=(0, 10), pady=(0, 2))
+            
+            # Regex entry box
+            regex_var = tk.StringVar()
+            regex_entry = ttk.Entry(header_frame, textvariable=regex_var, width=25, 
+                                   font=("TkDefaultFont", 9))
+            regex_entry.grid(row=row*3+2, column=col, sticky=(tk.W, tk.E), padx=(0, 10), pady=(0, 10))
+            
+            # Add placeholder text
+            regex_entry.insert(0, "regex filter...")
+            regex_entry.bind('<FocusIn>', lambda e, entry=regex_entry: self._on_regex_focus_in(e, entry))
+            regex_entry.bind('<FocusOut>', lambda e, entry=regex_entry: self._on_regex_focus_out(e, entry))
             
             # Store references
             self.dropdown_vars[column] = var
             self.dropdowns[column] = combobox
+            self.regex_vars[column] = regex_var
+            self.regex_entries[column] = regex_entry
             
             # Configure column weights for header frame
             header_frame.columnconfigure(col, weight=1)
         
         # Clear filters button
         clear_btn = ttk.Button(header_frame, text="Clear All Filters", command=self._clear_filters)
-        clear_btn.grid(row=(len(self.columns)-1)//4*2+2, column=0, columnspan=2, 
+        clear_btn.grid(row=(len(self.columns)-1)//3*3+3, column=0, columnspan=2, 
                       sticky=tk.W, pady=(10, 0))
         
         # Results frame
@@ -121,7 +141,7 @@ class DatabaseSelector:
         
         # Instructions label
         instructions = ttk.Label(main_frame, 
-                                text="Select dropdown values to filter results. Click on a result line to copy the file path to clipboard.",
+                                text="Select dropdown values to filter results. Use regex entries for pattern matching. Click on a result line to copy the file path to clipboard.",
                                 font=("TkDefaultFont", 9))
         instructions.grid(row=3, column=0, sticky=tk.W, pady=(5, 0))
     
@@ -130,42 +150,118 @@ class DatabaseSelector:
         try:
             for column in self.columns:
                 cursor = self.conn.execute(f"SELECT DISTINCT {column} FROM metadata ORDER BY {column}")
-                values = [''] + [row[0] for row in cursor.fetchall() if row[0] is not None]
-                self.dropdowns[column]['values'] = values
+                values = [row[0] for row in cursor.fetchall() if row[0] is not None]
+                self.all_values[column] = values
+                
+                # Initialize dropdown with all values plus empty option
+                dropdown_values = [''] + values
+                self.dropdowns[column]['values'] = dropdown_values
         except sqlite3.Error as e:
             messagebox.showerror("Database Error", f"Failed to populate dropdowns:\n{e}")
+    
+    def _initialize_regex_placeholders(self):
+        """Initialize regex entry boxes with placeholder styling."""
+        for entry in self.regex_entries.values():
+            entry.config(foreground='grey')
     
     def _bind_events(self):
         """Bind event handlers to UI elements."""
         # Bind dropdown change events
         for column in self.columns:
             self.dropdown_vars[column].trace_add('write', self._on_filter_change)
+            self.regex_vars[column].trace_add('write', self._on_regex_change)
         
         # Bind text widget click for copying paths
         self.results_text.bind('<Button-1>', self._on_result_click)
     
     def _on_filter_change(self, *args):
         """Handle dropdown selection changes."""
+        self._update_dropdown_from_regex()
         self._update_results()
     
+    def _on_regex_change(self, *args):
+        """Handle regex entry changes."""
+        self._update_dropdown_from_regex()
+        self._update_results()
+    
+    def _on_regex_focus_in(self, event, entry):
+        """Handle focus in for regex entry (clear placeholder)."""
+        if entry.get() == "regex filter...":
+            entry.delete(0, tk.END)
+            entry.config(foreground='black')
+    
+    def _on_regex_focus_out(self, event, entry):
+        """Handle focus out for regex entry (restore placeholder if empty)."""
+        if not entry.get().strip():
+            entry.delete(0, tk.END)
+            entry.insert(0, "regex filter...")
+            entry.config(foreground='grey')
+    
+    def _update_dropdown_from_regex(self):
+        """Update dropdown options based on regex filters."""
+        for column in self.columns:
+            regex_text = self.regex_vars[column].get().strip()
+            
+            # Skip if placeholder text or empty
+            if not regex_text or regex_text == "regex filter...":
+                # Show all values
+                filtered_values = [''] + self.all_values[column]
+            else:
+                try:
+                    # Compile regex and filter values
+                    pattern = re.compile(regex_text, re.IGNORECASE)
+                    filtered_values = [''] + [
+                        value for value in self.all_values[column] 
+                        if pattern.search(str(value))
+                    ]
+                except re.error:
+                    # Invalid regex, show all values
+                    filtered_values = [''] + self.all_values[column]
+            
+            # Update dropdown values
+            current_selection = self.dropdown_vars[column].get()
+            self.dropdowns[column]['values'] = filtered_values
+            
+            # Preserve selection if it's still valid
+            if current_selection not in filtered_values:
+                self.dropdown_vars[column].set('')
+    
     def _clear_filters(self):
-        """Clear all dropdown selections."""
+        """Clear all dropdown selections and regex entries."""
         for var in self.dropdown_vars.values():
             var.set('')
+        for column in self.columns:
+            entry = self.regex_entries[column]
+            entry.delete(0, tk.END)
+            entry.insert(0, "regex filter...")
+            entry.config(foreground='grey')
+        self._update_dropdown_from_regex()
         self._update_results()
     
     def _update_results(self):
-        """Update results display based on current filter selections."""
+        """Update results display based on current filter selections and regex patterns."""
         try:
-            # Build WHERE clause from non-empty dropdown selections
+            # Build WHERE clause from dropdown selections and regex patterns
             where_conditions = []
             params = []
             
             for column in self.columns:
-                value = self.dropdown_vars[column].get().strip()
-                if value:
+                # Check dropdown selection
+                dropdown_value = self.dropdown_vars[column].get().strip()
+                regex_value = self.regex_vars[column].get().strip()
+                
+                # Skip if regex is placeholder text
+                if regex_value == "regex filter...":
+                    regex_value = ""
+                
+                if dropdown_value:
+                    # Exact match from dropdown
                     where_conditions.append(f"{column} = ?")
-                    params.append(value)
+                    params.append(dropdown_value)
+                elif regex_value:
+                    # Regex pattern matching
+                    where_conditions.append(f"{column} REGEXP ?")
+                    params.append(regex_value)
             
             # Construct SQL query
             query = "SELECT * FROM metadata"
@@ -173,7 +269,8 @@ class DatabaseSelector:
                 query += " WHERE " + " AND ".join(where_conditions)
             query += " ORDER BY git_owner, git_repo, primary_language"
             
-            # Execute query
+            # Execute query with custom REGEXP function
+            self._setup_regexp_function()
             cursor = self.conn.execute(query, params)
             rows = cursor.fetchall()
             
@@ -186,6 +283,21 @@ class DatabaseSelector:
         except sqlite3.Error as e:
             messagebox.showerror("Query Error", f"Database query failed:\n{e}")
             self.status_var.set("Query failed")
+        except re.error as e:
+            # Handle invalid regex gracefully
+            self.status_var.set(f"Invalid regex pattern: {e}")
+    
+    def _setup_regexp_function(self):
+        """Set up custom REGEXP function for SQLite."""
+        def regexp(pattern, text):
+            if text is None:
+                return False
+            try:
+                return re.search(pattern, str(text), re.IGNORECASE) is not None
+            except re.error:
+                return False
+        
+        self.conn.create_function("REGEXP", 2, regexp)
     
     def _display_results(self, rows: List[sqlite3.Row]):
         """Display query results in the text widget."""
