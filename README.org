@@ -50,14 +50,13 @@
                           --max_workers=$workers \
                           > db-collection-host.log 2>&1
 
-     sqlite3 db-collection-host.tmp/metadata.sql 
-     "
+     sqlite3 db-collection-host.tmp/metadata.sql <<eoo
      .tables
      select count(*) from metadata;
-     .mode ascii
+     .mode column
+     .width 13 13 13 13 13 13 13 13 13 13 13
      select * from metadata limit 1;
-     "
-
+     eoo
 
      # Serve collected DBs plus metadata
      cd ~/work-gh/mrva/mrvahepc 

@@ -6,6 +6,7 @@ import yaml
 import sys
 import os
 import sqlite3
+import queue
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from plumbum import cli, local
 from plumbum.cmd import find, mkdir, ln, rm, mktemp, unzip, date, env
@@ -53,7 +54,7 @@ def init_metadata_db(db_path):
     conn.close()
 
 # Process a single db.zip file
-def process_db_file(zip_path, db_collection_dir):
+def process_db_file(zip_path, db_collection_dir, result_queue):
     temp_dir = mktemp("-d").strip()
     try:
         unzip("-o", "-q", zip_path, "*codeql-database.yml", "-d", temp_dir)
@@ -97,21 +98,49 @@ def process_db_file(zip_path, db_collection_dir):
             "db_file_size"           : file_size,
         }
 
-        metadata_db = local.path(db_collection_dir) / "metadata.sql"
-        
-        # Initialize database if it doesn't exist
-        if not metadata_db.exists():
-            init_metadata_db(str(metadata_db))
-        
-        # Insert metadata into SQLite database
-        conn = sqlite3.connect(str(metadata_db))
-        cursor = conn.cursor()
-        cursor.execute('''
-            INSERT INTO metadata (
-                git_branch, git_commit_id, git_owner, git_repo, ingestion_datetime_utc,
-                primary_language, result_url, tool_name, tool_version, projname, db_file_size
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', (
+        # Add metadata to thread-safe queue
+        result_queue.put(metadata)
+
+        copy_path = local.path(db_collection_dir) / new_db_fname
+        if not copy_path.exists():
+            ln("-s", zip_path, copy_path)
+
+    except Exception as e:
+        log("WARN", f"Error processing {zip_path}: {e}")
+    finally:
+        rm("-rf", temp_dir)
+
+# Batch write all metadata from queue to SQLite database
+def write_metadata_to_db(result_queue, db_collection_dir):
+    metadata_db = local.path(db_collection_dir) / "metadata.sql"
+    
+    # Initialize database
+    init_metadata_db(str(metadata_db))
+    
+    # Collect all metadata from queue
+    all_metadata = []
+    while not result_queue.empty():
+        try:
+            metadata = result_queue.get_nowait()
+            all_metadata.append(metadata)
+        except queue.Empty:
+            break
+    
+    if not all_metadata:
+        log("INFO", "No metadata to write to database")
+        return
+    
+    # Batch insert all metadata
+    conn = sqlite3.connect(str(metadata_db))
+    cursor = conn.cursor()
+    
+    cursor.executemany('''
+        INSERT INTO metadata (
+            git_branch, git_commit_id, git_owner, git_repo, ingestion_datetime_utc,
+            primary_language, result_url, tool_name, tool_version, projname, db_file_size
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ''', [
+        (
             metadata["git_branch"],
             metadata["git_commit_id"],
             metadata["git_owner"],
@@ -123,18 +152,13 @@ def process_db_file(zip_path, db_collection_dir):
             metadata["tool_version"],
             metadata["projname"],
             metadata["db_file_size"]
-        ))
-        conn.commit()
-        conn.close()
-
-        copy_path = local.path(db_collection_dir) / new_db_fname
-        if not copy_path.exists():
-            ln("-s", zip_path, copy_path)
-
-    except Exception as e:
-        log("WARN", f"Error processing {zip_path}: {e}")
-    finally:
-        rm("-rf", temp_dir)
+        ) for metadata in all_metadata
+    ])
+    
+    conn.commit()
+    conn.close()
+    
+    log("INFO", f"Successfully wrote {len(all_metadata)} metadata records to database")
 
 # Main application class
 class HEPC(cli.Application):
@@ -177,9 +201,12 @@ class HEPC(cli.Application):
         db_files_to_process = db_files[0:self.max_dbs]
         log("INFO", f"Processing {len(db_files_to_process)} db.zip files with {self.max_workers} workers")
 
+        # Create thread-safe queue for results
+        result_queue = queue.Queue()
+
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             futures = {
-                executor.submit(process_db_file, zip_path, db_collection_dir): zip_path
+                executor.submit(process_db_file, zip_path, db_collection_dir, result_queue): zip_path
                 for zip_path in db_files_to_process
             }
             
@@ -189,6 +216,9 @@ class HEPC(cli.Application):
                     future.result()
                 except Exception as e:
                     log("ERROR", f"Failed to process {zip_path}: {e}")
+
+        # Write all collected metadata to SQLite database in a single batch
+        write_metadata_to_db(result_queue, db_collection_dir)
 
         log("INFO", "Processing completed.")
 
