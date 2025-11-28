@@ -44,4 +44,4 @@ dependencies = [
 
 [tool.setuptools]
 packages = ["mrvahepc"]
-script-files = ["bin/mc-hepc-init", "bin/mc-hepc-serve"]
+script-files = ["bin/mc-hepc-init", "bin/mc-hepc-serve", "bin/host-hepc-init", "bin/db-selector-gui"]

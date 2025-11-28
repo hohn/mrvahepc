@@ -69,13 +69,15 @@
 
      #+END_SRC
 
-   - [ ] Use metadata.sql to provide DB selection UI
-     #+BEGIN_SRC sh 
-       cd ~/work-gh/mrva/mrvahepc 
-       uv sync
+   - [X] Use metadata.sql to provide DB selection UI
+       #+BEGIN_SRC sh 
+         cd ~/work-gh/mrva/mrvahepc 
+         uv sync
 
-       # Use metadata.sql to provide DB selection UI
-     #+END_SRC
+         # Use metadata.sql to provide DB selection UI
+         cd ~/work-gh/mrva/mrvahepc 
+         ./bin/db-selector-gui --metadata_db_path db-collection-host.tmp/metadata.sql
+       #+END_SRC
 
    - [ ] Serve collected DBs plus metadata
      #+BEGIN_SRC sh 

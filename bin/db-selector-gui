@@ -1,0 +1,51 @@
+#!/usr/bin/env -S uv run python
+# -*- python -*-
+"""
+Database Selector GUI for MRVA HEPC
+
+A Tkinter-based interface for browsing and selecting CodeQL databases
+from the SQLite metadata database created by host-hepc-init.
+"""
+
+import sys
+from pathlib import Path
+from plumbum import cli
+from mrvahepc.db_selector_ui import create_gui
+
+
+class DatabaseSelectorApp(cli.Application):
+    """
+    Launch a GUI for browsing and selecting CodeQL databases from metadata.sql.
+    
+    Provides dropdown filters for all metadata columns and displays matching
+    results in a text widget. Click on result lines to copy file paths to clipboard.
+    """
+    
+    metadata_db_path = cli.SwitchAttr(
+        "--metadata_db_path", str, mandatory=True,
+        help="Path to the metadata.sql SQLite database file"
+    )
+    
+    def main(self):
+        """Launch the database selector GUI."""
+        db_path = Path(self.metadata_db_path).expanduser().resolve()
+        
+        if not db_path.exists():
+            print(f"Error: Database file does not exist: {db_path}", file=sys.stderr)
+            return 1
+        
+        if not db_path.is_file():
+            print(f"Error: Path is not a file: {db_path}", file=sys.stderr)
+            return 1
+        
+        try:
+            create_gui(str(db_path))
+        except Exception as e:
+            print(f"Error launching GUI: {e}", file=sys.stderr)
+            return 1
+        
+        return 0
+
+
+if __name__ == "__main__":
+    DatabaseSelectorApp.run()
