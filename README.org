@@ -1,34 +1,72 @@
 * Introduction to hepc -- HTTP End Point for CodeQL
-** Usage Sample
-  #+BEGIN_SRC sh 
-    cd ~/work-gh/mrva/mrvahepc 
-    uv sync  # one-time install; uv-run shebangs avoid manual activation
+** Usage Sample for Containers
+   This is for container preparation; all operations produce full, standalone
+   copies.  For a host service with full storage, see 
+   [[*Usage Sample for Full Machines][Usage Sample for Full Machines]]
+   #+BEGIN_SRC sh 
+     cd ~/work-gh/mrva/mrvahepc 
+     uv sync  # one-time install; uv-run shebangs avoid manual activation
 
-    # Collect DBs from filesystem
-    cd ~/work-gh/mrva/mrvahepc && rm -fR db-collection.tmp/
-    export MRVA_HEPC_ENDPOINT=http://hepc
-    ./bin/mc-hepc-init --db_collection_dir db-collection.tmp \
-                       --starting_path ~/work-gh/mrva/mrva-open-source-download/ \
-                       --max_dbs 17
+     # Collect DBs from filesystem
+     cd ~/work-gh/mrva/mrvahepc && rm -fR db-collection.tmp/
+     export MRVA_HEPC_ENDPOINT=http://hepc
+     ./bin/mc-hepc-init --db_collection_dir db-collection.tmp \
+                        --starting_path ~/work-gh/mrva/mrva-open-source-download/ \
+                        --max_dbs 17
 
-    # Serve collected DBs plus metadata
-    cd ~/work-gh/mrva/mrvahepc 
-    ./bin/mc-hepc-serve --codeql-db-dir db-collection.tmp
+     # Serve collected DBs plus metadata
+     cd ~/work-gh/mrva/mrvahepc 
+     ./bin/mc-hepc-serve --codeql-db-dir db-collection.tmp
 
-    # Test server
-    curl 127.0.0.1:8070/index -o - 2>/dev/null | wc -l
+     # Test server
+     curl 127.0.0.1:8070/index -o - 2>/dev/null | wc -l
 
-    curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
-         -o - 2>/dev/null | wc -l
+     curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
+          -o - 2>/dev/null | wc -l
 
-    url=$(curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
-               -o - 2>/dev/null | head -1 | jq -r .result_url)
-    echo $url
-    # http://hepc/db/db-collection.tmp/aircrack-ng-aircrack-ng-ctsj-41ebbe.zip
+     url=$(curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
+                -o - 2>/dev/null | head -1 | jq -r .result_url)
+     echo $url
+     # http://hepc/db/db-collection.tmp/aircrack-ng-aircrack-ng-ctsj-41ebbe.zip
 
-    wget $(echo $url|sed 's|http://hepc|http://127.0.0.1:8070|g;') 
+     wget $(echo $url|sed 's|http://hepc|http://127.0.0.1:8070|g;') 
 
-  #+END_SRC
+   #+END_SRC
+
+** TODO Usage Sample for Full Machines
+   This is for providing a DB service from a complete machine, with DBs already in
+   place.  All operations produce links to existing DBs, not copies.
+
+   #+BEGIN_SRC sh 
+     cd ~/work-gh/mrva/mrvahepc 
+     uv sync
+
+     # Link to DBs from filesystem
+     cd ~/work-gh/mrva/mrvahepc && rm -fR db-collection-host.tmp/
+     export MRVA_HEPC_ENDPOINT=http://hepc-host
+     ./bin/host-hepc-init --db_collection_dir db-collection-host.tmp \
+                          --starting_path ~/work-gh/mrva/mrva-open-source-download/ \
+                          --max_dbs 40
+
+     # Serve collected DBs plus metadata
+     cd ~/work-gh/mrva/mrvahepc 
+     ./bin/mc-hepc-serve --codeql-db-dir db-collection.tmp
+
+     # Test server
+     curl 127.0.0.1:8070/index -o - 2>/dev/null | wc -l
+
+     curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
+          -o - 2>/dev/null | wc -l
+
+     url=$(curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
+                -o - 2>/dev/null | head -1 | jq -r .result_url)
+     echo $url
+     # http://hepc/db/db-collection.tmp/aircrack-ng-aircrack-ng-ctsj-41ebbe.zip
+
+     wget $(echo $url|sed 's|http://hepc|http://127.0.0.1:8070|g;') 
+
+   #+END_SRC
+
 
 ** Installation
    - Use [[https://docs.astral.sh/uv/][uv]] to install dependencies without manually activating a venv

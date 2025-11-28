@@ -6,7 +6,7 @@ import yaml
 import sys
 import os
 from plumbum import cli, local
-from plumbum.cmd import find, mkdir, cp, rm, mktemp, unzip, date, env
+from plumbum.cmd import find, mkdir, ln, rm, mktemp, unzip, date, env
 
 # Logging function
 def log(level, message):
@@ -81,7 +81,7 @@ def process_db_file(zip_path, db_collection_dir):
 
         copy_path = local.path(db_collection_dir) / new_db_fname
         if not copy_path.exists():
-            cp(zip_path, copy_path)
+            ln("-s", zip_path, copy_path)
 
     except Exception as e:
         log("WARN", f"Error processing {zip_path}: {e}")
