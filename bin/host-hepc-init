@@ -5,6 +5,7 @@ import hashlib
 import yaml
 import sys
 import os
+import sqlite3
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from plumbum import cli, local
 from plumbum.cmd import find, mkdir, ln, rm, mktemp, unzip, date, env
@@ -28,6 +29,27 @@ def generate_cid(cli_version, creation_time, primary_language, sha):
 # Expand environment variables in paths
 def expand_path(path):
     return local.env.expand(path)
+
+# Initialize SQLite database and create metadata table
+def init_metadata_db(db_path):
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS metadata (
+            git_branch TEXT,
+            git_commit_id TEXT,
+            git_repo TEXT,
+            ingestion_datetime_utc TEXT,
+            result_url TEXT,
+            tool_id TEXT,
+            tool_name TEXT,
+            tool_version TEXT,
+            projname TEXT,
+            file_size INTEGER
+        )
+    ''')
+    conn.commit()
+    conn.close()
 
 # Process a single db.zip file
 def process_db_file(zip_path, db_collection_dir):
@@ -73,10 +95,34 @@ def process_db_file(zip_path, db_collection_dir):
             "file_size"              : file_size,
         }
 
-        metadata_file = local.path(db_collection_dir) / "metadata.json"
-        with metadata_file.open("a") as f:
-            json.dump(metadata, f)
-            f.write("\n")
+        metadata_db = local.path(db_collection_dir) / "metadata.sql"
+        
+        # Initialize database if it doesn't exist
+        if not metadata_db.exists():
+            init_metadata_db(str(metadata_db))
+        
+        # Insert metadata into SQLite database
+        conn = sqlite3.connect(str(metadata_db))
+        cursor = conn.cursor()
+        cursor.execute('''
+            INSERT INTO metadata (
+                git_branch, git_commit_id, git_repo, ingestion_datetime_utc,
+                result_url, tool_id, tool_name, tool_version, projname, file_size
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (
+            metadata["git_branch"],
+            metadata["git_commit_id"],
+            metadata["git_repo"],
+            metadata["ingestion_datetime_utc"],
+            metadata["result_url"],
+            metadata["tool_id"],
+            metadata["tool_name"],
+            metadata["tool_version"],
+            metadata["projname"],
+            metadata["file_size"]
+        ))
+        conn.commit()
+        conn.close()
 
         copy_path = local.path(db_collection_dir) / new_db_fname
         if not copy_path.exists():
@@ -92,7 +138,7 @@ class HEPC(cli.Application):
     """
     HEPC processes db.zip files found in a starting directory,
     copies updated names in a collection directory,
-    and adds a metadata information file "metadata.json" to the directory.
+    and adds metadata information to a SQLite database "metadata.sql" in the directory.
     """
 
     db_collection_dir = cli.SwitchAttr(

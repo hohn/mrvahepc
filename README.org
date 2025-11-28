@@ -50,7 +50,7 @@
                           --max_workers=$workers \
                           > db-collection-host.log 2>&1
 
-     ls db-collection-host.tmp/ | wc -l
+     sqlite3 db-collection-host.tmp/metadata.sql 
 
 
      # Serve collected DBs plus metadata
