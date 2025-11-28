@@ -51,6 +51,12 @@
                           > db-collection-host.log 2>&1
 
      sqlite3 db-collection-host.tmp/metadata.sql 
+     "
+     .tables
+     select count(*) from metadata;
+     .mode ascii
+     select * from metadata limit 1;
+     "
 
 
      # Serve collected DBs plus metadata

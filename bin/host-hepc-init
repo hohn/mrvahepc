@@ -38,14 +38,15 @@ def init_metadata_db(db_path):
         CREATE TABLE IF NOT EXISTS metadata (
             git_branch TEXT,
             git_commit_id TEXT,
+            git_owner TEXT,
             git_repo TEXT,
             ingestion_datetime_utc TEXT,
+            primary_language TEXT,
             result_url TEXT,
-            tool_id TEXT,
             tool_name TEXT,
             tool_version TEXT,
             projname TEXT,
-            file_size INTEGER
+            db_file_size INTEGER
         )
     ''')
     conn.commit()
@@ -85,14 +86,15 @@ def process_db_file(zip_path, db_collection_dir):
         metadata = {
             "git_branch"             : "HEAD",
             "git_commit_id"          : sha,
+            "git_owner"              : owner,
             "git_repo"               : repo,
             "ingestion_datetime_utc" : str(creation_time),
+            "primary_language"       : primary_language,
             "result_url"             : result_file,
-            "tool_id"                : "9f2f9642-febb-4435-9204-fb50bbd43de4",
             "tool_name"              : f"codeql-{primary_language}",
             "tool_version"           : cli_version,
             "projname"               : f"{owner}/{repo}",
-            "file_size"              : file_size,
+            "db_file_size"           : file_size,
         }
 
         metadata_db = local.path(db_collection_dir) / "metadata.sql"
@@ -106,20 +108,21 @@ def process_db_file(zip_path, db_collection_dir):
         cursor = conn.cursor()
         cursor.execute('''
             INSERT INTO metadata (
-                git_branch, git_commit_id, git_repo, ingestion_datetime_utc,
-                result_url, tool_id, tool_name, tool_version, projname, file_size
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                git_branch, git_commit_id, git_owner, git_repo, ingestion_datetime_utc,
+                primary_language, result_url, tool_name, tool_version, projname, db_file_size
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', (
             metadata["git_branch"],
             metadata["git_commit_id"],
+            metadata["git_owner"],
             metadata["git_repo"],
             metadata["ingestion_datetime_utc"],
+            metadata["primary_language"],
             metadata["result_url"],
-            metadata["tool_id"],
             metadata["tool_name"],
             metadata["tool_version"],
             metadata["projname"],
-            metadata["file_size"]
+            metadata["db_file_size"]
         ))
         conn.commit()
         conn.close()
