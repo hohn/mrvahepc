@@ -5,6 +5,7 @@ import hashlib
 import yaml
 import sys
 import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from plumbum import cli, local
 from plumbum.cmd import find, mkdir, ln, rm, mktemp, unzip, date, env
 
@@ -107,6 +108,10 @@ class HEPC(cli.Application):
         "--max_dbs", int, mandatory=False, default=100,
         help="Specify the maximum number of databases to ingest"
     )
+    max_workers = cli.SwitchAttr(
+        "--max_workers", int, mandatory=False, default=4,
+        help="Specify the number of parallel workers for processing"
+    )
 
     def main(self):
         db_collection_dir = expand_path(self.db_collection_dir)
@@ -122,8 +127,21 @@ class HEPC(cli.Application):
             log("WARN", "No db.zip files found in the specified starting path.")
             return
 
-        for zip_path in db_files[0:self.max_dbs]:
-            process_db_file(zip_path, db_collection_dir)
+        db_files_to_process = db_files[0:self.max_dbs]
+        log("INFO", f"Processing {len(db_files_to_process)} db.zip files with {self.max_workers} workers")
+
+        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+            futures = {
+                executor.submit(process_db_file, zip_path, db_collection_dir): zip_path
+                for zip_path in db_files_to_process
+            }
+            
+            for future in as_completed(futures):
+                zip_path = futures[future]
+                try:
+                    future.result()
+                except Exception as e:
+                    log("ERROR", f"Failed to process {zip_path}: {e}")
 
         log("INFO", "Processing completed.")
 
