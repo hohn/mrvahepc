@@ -43,11 +43,10 @@
 
      # Link to DBs from filesystem
      cd ~/work-gh/mrva/mrvahepc && rm -fR db-collection-host.tmp/
-     export MRVA_HEPC_ENDPOINT=http://hepc-host
      workers=$(( $(nproc) * 2 ))
      ./bin/host-hepc-init --db_collection_dir db-collection-host.tmp \
                           --starting_path ~/work-gh/mrva/mrva-open-source-download/ \
-                          --max_dbs 8000 \
+                          --max_dbs 800 \
                           --max_workers=$workers \
                           > db-collection-host.log 2>&1
 

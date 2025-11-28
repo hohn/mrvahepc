@@ -56,23 +56,21 @@ def process_db_file(zip_path, db_collection_dir):
         owner                  = source_location_prefix.parent.name
         cid = generate_cid(cli_version, creation_time, primary_language, sha)
         new_db_fname           = f"{owner}-{repo}-ctsj-{cid}.zip"
-        hepc_endpoint          = os.getenv("MRVA_HEPC_ENDPOINT")
-        if hepc_endpoint is None:
-            log("WARN", "Environment variable 'MRVA_HEPC_ENDPOINT' is not set."
-                "Using default 'http://hepc'.")
-            hepc_endpoint = "http://hepc"
-        result_url   = f"{hepc_endpoint}/db/{db_collection_dir}/{new_db_fname}"
+        result_file             = f"{db_collection_dir}/{new_db_fname}"
+        
+        file_size = local.path(zip_path).stat().st_size
         
         metadata = {
             "git_branch"             : "HEAD",
             "git_commit_id"          : sha,
             "git_repo"               : repo,
             "ingestion_datetime_utc" : str(creation_time),
-            "result_url"             : result_url,
+            "result_url"             : result_file,
             "tool_id"                : "9f2f9642-febb-4435-9204-fb50bbd43de4",
             "tool_name"              : f"codeql-{primary_language}",
             "tool_version"           : cli_version,
             "projname"               : f"{owner}/{repo}",
+            "file_size"              : file_size,
         }
 
         metadata_file = local.path(db_collection_dir) / "metadata.json"
