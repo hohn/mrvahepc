@@ -37,45 +37,66 @@
    This is for providing a DB service from a complete machine, with DBs already in
    place.  All operations produce links to existing DBs, not copies.
 
-   #+BEGIN_SRC sh 
-     cd ~/work-gh/mrva/mrvahepc 
-     uv sync
+   - [X] Form link to DBs from filesystem, create metadata.sql
+     #+BEGIN_SRC sh 
+       cd ~/work-gh/mrva/mrvahepc 
+       uv sync
 
-     # Link to DBs from filesystem
-     cd ~/work-gh/mrva/mrvahepc && rm -fR db-collection-host.tmp/
-     workers=$(( $(nproc) * 2 ))
-     ./bin/host-hepc-init --db_collection_dir db-collection-host.tmp \
-                          --starting_path ~/work-gh/mrva/mrva-open-source-download/ \
-                          --max_dbs 800 \
-                          --max_workers=$workers \
-                          > db-collection-host.log 2>&1
+       # Form link to DBs from filesystem, create metadata.sql
+       cd ~/work-gh/mrva/mrvahepc && rm -fR db-collection-host.tmp/
+       workers=$(( $(nproc) * 2 ))
+       ./bin/host-hepc-init --db_collection_dir db-collection-host.tmp \
+                            --starting_path ~/work-gh/mrva/mrva-open-source-download/ \
+                            --max_dbs 800 \
+                            --max_workers=$workers \
+                            > db-collection-host.log 2>&1
+     #+END_SRC
 
-     sqlite3 db-collection-host.tmp/metadata.sql <<eoo
-     .tables
-     select count(*) from metadata;
-     .mode column
-     .width 13 13 13 13 13 13 13 13 13 13 13
-     select * from metadata limit 1;
-     eoo
+   - [X] Inspect metadata.sql
+     #+BEGIN_SRC sh 
+       cd ~/work-gh/mrva/mrvahepc 
+       uv sync
 
-     # Serve collected DBs plus metadata
-     cd ~/work-gh/mrva/mrvahepc 
-     ./bin/mc-hepc-serve --codeql-db-dir db-collection.tmp
+       # Inspect metadata.sql
+       cd ~/work-gh/mrva/mrvahepc 
+       sqlite3 db-collection-host.tmp/metadata.sql <<eoo
+       .tables
+       select count(*) from metadata;
+       .mode column
+       .width 13 13 13 13 13 13 13 13 13 13 13
+       select * from metadata limit 1;
+       eoo
 
-     # Test server
-     curl 127.0.0.1:8070/index -o - 2>/dev/null | wc -l
+     #+END_SRC
 
-     curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
-          -o - 2>/dev/null | wc -l
+   - [ ] Use metadata.sql to provide DB selection UI
+     #+BEGIN_SRC sh 
+       cd ~/work-gh/mrva/mrvahepc 
+       uv sync
 
-     url=$(curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
-                -o - 2>/dev/null | head -1 | jq -r .result_url)
-     echo $url
-     # http://hepc/db/db-collection.tmp/aircrack-ng-aircrack-ng-ctsj-41ebbe.zip
+       # Use metadata.sql to provide DB selection UI
+     #+END_SRC
 
-     wget $(echo $url|sed 's|http://hepc|http://127.0.0.1:8070|g;') 
+   - [ ] Serve collected DBs plus metadata
+     #+BEGIN_SRC sh 
+       # Serve collected DBs plus metadata
+       cd ~/work-gh/mrva/mrvahepc 
+       ./bin/mc-hepc-serve --codeql-db-dir db-collection.tmp
 
-   #+END_SRC
+       # Test server
+       curl 127.0.0.1:8070/index -o - 2>/dev/null | wc -l
+
+       curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
+            -o - 2>/dev/null | wc -l
+
+       url=$(curl 127.0.0.1:8070/api/v1/latest_results/codeql-all \
+                  -o - 2>/dev/null | head -1 | jq -r .result_url)
+       echo $url
+       # http://hepc/db/db-collection.tmp/aircrack-ng-aircrack-ng-ctsj-41ebbe.zip
+
+       wget $(echo $url|sed 's|http://hepc|http://127.0.0.1:8070|g;') 
+     #+END_SRC
+
 
 
 ** Installation
