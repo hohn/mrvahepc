@@ -1,0 +1,107 @@
+#!/usr/bin/env -S uv run python
+# -*- python -*-
+import logging
+import sqlite3
+from pathlib import Path
+from plumbum import cli
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse, JSONResponse, Response
+import uvicorn
+import json
+
+# Logging configuration
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[logging.StreamHandler()]
+)
+logger = logging.getLogger(__name__)
+
+# FastAPI application
+app = FastAPI()
+db_dir = None  # This will be set by the CLI application
+
+@app.get("/db/{file_path:path}")
+def serve_file(file_path: str):
+    """
+    Serve files from the database directory, such as .zip files or metadata.json.
+    """
+    logger.info(f"Requested file: {file_path}")
+    resolved_path = Path(file_path).resolve(strict=True)
+    logger.info(f"file resolved to: {resolved_path}")
+    if not resolved_path.exists():
+        logger.error(f"File not found: {resolved_path}")
+        raise HTTPException(status_code=404, detail=f"{resolved_path} not found")
+    return FileResponse(resolved_path)
+
+
+@app.get("/index")
+@app.get("/api/v1/latest_results/codeql-all")
+def serve_metadata():
+    """
+    Serve metadata from SQLite database for multiple routes.
+    """
+    metadata_db_path = Path(db_dir) / "metadata.sql"
+    logger.info(f"Requested metadata from: {metadata_db_path}")
+    if not metadata_db_path.exists():
+        logger.error("metadata.sql not found.")
+        raise HTTPException(status_code=404, detail="metadata.sql not found")
+    
+    try:
+        conn = sqlite3.connect(str(metadata_db_path))
+        conn.row_factory = sqlite3.Row  # This allows us to access columns by name
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM metadata")
+        rows = cursor.fetchall()
+        conn.close()
+        
+        # Convert rows to JSONL format (newline-delimited JSON)
+        jsonl_lines = [json.dumps(dict(row)) for row in rows]
+        jsonl_content = '\n'.join(jsonl_lines)
+        logger.info(f"Serving {len(jsonl_lines)} metadata records from database as JSONL")
+        return Response(content=jsonl_content, media_type="application/x-ndjson")
+        
+    except Exception as e:
+        logger.error(f"Error querying metadata database: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+
+@app.middleware("http")
+async def log_request(request, call_next):
+    logger.info(f"Incoming request: {request.method} {request.url}")
+    response = await call_next(request)
+    return response
+
+class MRVAHepc(cli.Application):
+    """
+    MRVAHepc serves:
+    1. CodeQL database .zip files found in the --codeql-db-dir
+    2. Metadata for those zip files, contained in metadata.sql SQLite database in the same
+       directory.
+    The HTTP endpoints are:
+    1. /db/{filename}
+    2. /index
+    3. /api/v1/latest_results/codeql-all
+    """
+
+    codeql_db_dir = cli.SwitchAttr("--codeql-db-dir", str, mandatory=True,
+                                   help="Directory containing CodeQL database files")
+    host = cli.SwitchAttr("--host", str, default="127.0.0.1",
+                          help="Host address for the HTTP server")
+    port = cli.SwitchAttr("--port", int, default=8070, help="Port for the HTTP server")
+
+    def main(self):
+        global db_dir
+        db_dir = Path(self.codeql_db_dir)
+        if not db_dir.is_dir():
+            logger.error(f"Invalid directory: {db_dir}")
+            return 1
+
+        logger.info(f"Starting server at {self.host}:{self.port}")
+        logger.info(f"Serving files from directory: {db_dir}")
+
+        # Run the FastAPI server using Uvicorn
+        uvicorn.run(app, host=self.host, port=self.port)
+
+
+if __name__ == "__main__":
+    MRVAHepc.run()
