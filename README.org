@@ -33,11 +33,11 @@
 
    #+END_SRC
 
-** TODO Usage Sample for Full Machines
+** Usage Sample for Full Machines
    This is for providing a DB service from a complete machine, with DBs already in
    place.  All operations produce links to existing DBs, not copies.
 
-   - [X] Form link to DBs from filesystem, create metadata.sql
+*** Form link to DBs from filesystem, create metadata.sql
      #+BEGIN_SRC sh 
        cd ~/work-gh/mrva/mrvahepc 
        uv sync
@@ -52,7 +52,7 @@
                             > db-collection-host.log 2>&1
      #+END_SRC
 
-   - [X] Inspect metadata.sql
+*** Inspect metadata.sql
      #+BEGIN_SRC sh 
        cd ~/work-gh/mrva/mrvahepc 
        uv sync
@@ -66,10 +66,9 @@
        .width 13 13 13 13 13 13 13 13 13 13 13
        select * from metadata limit 1;
        eoo
-
      #+END_SRC
 
-   - [X] Use metadata.sql to provide DB selection UI
+*** Use metadata.sql to provide DB selection UI
        #+BEGIN_SRC sh 
          cd ~/work-gh/mrva/mrvahepc 
          uv sync
@@ -79,7 +78,7 @@
          ./bin/db-selector-gui --metadata_db_path db-collection-host.tmp/metadata.sql
        #+END_SRC
 
-   - [ ] Serve collected DBs plus metadata
+*** TODO Serve collected DBs plus metadata
      #+BEGIN_SRC sh 
        # Serve collected DBs plus metadata
        cd ~/work-gh/mrva/mrvahepc 
