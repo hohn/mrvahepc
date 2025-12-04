@@ -19,6 +19,7 @@ class DatabaseSelectorApp(cli.Application):
     
     Provides dropdown filters for all metadata columns and displays matching
     results in a text widget. Click on result lines to copy file paths to clipboard.
+    Export buttons generate repository lists in GH-MRVA and VS Code formats.
     """
     
     metadata_db_path = cli.SwitchAttr(

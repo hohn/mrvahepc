@@ -27,7 +27,8 @@ def serve_file(file_path: str):
     Serve files from the database directory, such as .zip files or metadata.json.
     """
     logger.info(f"Requested file: {file_path}")
-    resolved_path = Path(file_path).resolve(strict=True)
+    # strip the leading path from the request, use provided prefix
+    resolved_path = (Path(db_dir) / Path(file_path).name).resolve(strict=True)
     logger.info(f"file resolved to: {resolved_path}")
     if not resolved_path.exists():
         logger.error(f"File not found: {resolved_path}")
