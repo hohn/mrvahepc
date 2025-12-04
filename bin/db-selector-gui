@@ -16,35 +16,46 @@ from mrvahepc.db_selector_ui import create_gui
 class DatabaseSelectorApp(cli.Application):
     """
     Launch a GUI for browsing and selecting CodeQL databases from metadata.sql.
-    
+
     Provides dropdown filters for all metadata columns and displays matching
     results in a text widget. Click on result lines to copy file paths to clipboard.
     Export buttons generate repository lists in GH-MRVA and VS Code formats.
     """
-    
+
     metadata_db_path = cli.SwitchAttr(
         "--metadata_db_path", str, mandatory=True,
         help="Path to the metadata.sql SQLite database file"
+    )
+
+    gh_mrva_output = cli.SwitchAttr(
+        "--gh_mrva_output", str, mandatory=False,
+        help="Path to write GH-MRVA selection JSON file (default: ~/work-gh/mrva/gh-mrva/gh-mrva-selection.json)"
     )
     
     def main(self):
         """Launch the database selector GUI."""
         db_path = Path(self.metadata_db_path).expanduser().resolve()
-        
+
         if not db_path.exists():
             print(f"Error: Database file does not exist: {db_path}", file=sys.stderr)
             return 1
-        
+
         if not db_path.is_file():
             print(f"Error: Path is not a file: {db_path}", file=sys.stderr)
             return 1
-        
+
+        # Set default output path if not specified
+        if self.gh_mrva_output:
+            output_path = Path(self.gh_mrva_output).expanduser().resolve()
+        else:
+            output_path = Path.home() / "work-gh" / "mrva" / "gh-mrva" / "gh-mrva-selection.json"
+
         try:
-            create_gui(str(db_path))
+            create_gui(str(db_path), str(output_path))
         except Exception as e:
             print(f"Error launching GUI: {e}", file=sys.stderr)
             return 1
-        
+
         return 0
 
 

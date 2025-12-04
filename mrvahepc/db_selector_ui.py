@@ -24,8 +24,9 @@ class DatabaseSelector:
     Export buttons generate repository lists in GH-MRVA and VS Code formats.
     """
     
-    def __init__(self, metadata_db_path: str):
+    def __init__(self, metadata_db_path: str, gh_mrva_output_path: Optional[str] = None):
         self.metadata_db_path = Path(metadata_db_path)
+        self.gh_mrva_output_path = Path(gh_mrva_output_path) if gh_mrva_output_path else None
         self.root = tk.Tk()
         self.root.title("MRVA HEPC Database Selector")
         self.root.geometry("1200x800")
@@ -385,24 +386,41 @@ class DatabaseSelector:
         if not self.current_results:
             messagebox.showwarning("No Results", "No databases to export. Please apply filters first.")
             return
-        
+
         repositories = self._get_repository_list()
-        
+
         export_data = {
             "mirva-list": repositories
         }
-        
+
         # Format as pretty JSON
         json_output = json.dumps(export_data, indent=4)
-        
+
+        # Write to file if output path is configured
+        if self.gh_mrva_output_path:
+            try:
+                # Create parent directory if it doesn't exist
+                self.gh_mrva_output_path.parent.mkdir(parents=True, exist_ok=True)
+
+                # Write JSON to file
+                with open(self.gh_mrva_output_path, 'w') as f:
+                    f.write(json_output)
+
+                status_msg = f"Exported {len(repositories)} repositories to {self.gh_mrva_output_path}"
+            except Exception as e:
+                messagebox.showerror("Export Error", f"Failed to write to {self.gh_mrva_output_path}:\n{e}")
+                status_msg = f"Export failed: {e}"
+        else:
+            status_msg = f"Exported {len(repositories)} repositories (copied to clipboard)"
+
         # Copy to clipboard
         self.root.clipboard_clear()
         self.root.clipboard_append(json_output)
         self.root.update()
-        
+
         # Show in a dialog
         self._show_export_dialog("GH-MRVA Export Format", json_output)
-        self.status_var.set(f"Exported {len(repositories)} repositories in GH-MRVA format (copied to clipboard)")
+        self.status_var.set(status_msg)
     
     def _export_vscode(self):
         """Export current selection in VS Code format."""
@@ -486,9 +504,9 @@ class DatabaseSelector:
                 self.conn.close()
 
 
-def create_gui(metadata_db_path: str):
+def create_gui(metadata_db_path: str, gh_mrva_output_path: Optional[str] = None):
     """Create and run the database selector GUI."""
-    app = DatabaseSelector(metadata_db_path)
+    app = DatabaseSelector(metadata_db_path, gh_mrva_output_path)
     app.run()
 
 
