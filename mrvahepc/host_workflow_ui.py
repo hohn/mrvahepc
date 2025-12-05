@@ -118,7 +118,7 @@ class WorkflowUI:
 
     def _create_steps_panel(self, parent):
         """Create the left panel with step buttons and controls."""
-        steps_frame = tk.Frame(parent, width=300)
+        steps_frame = tk.Frame(parent, width=400)
         steps_frame.pack(side=tk.LEFT, fill=tk.Y, padx=5)
         steps_frame.pack_propagate(False)
 
@@ -151,13 +151,18 @@ class WorkflowUI:
         )
 
         # Session number
-        session_frame = tk.Frame(steps_frame)
+        session_frame = tk.LabelFrame(steps_frame, text="Session", padx=5, pady=5)
         session_frame.pack(fill=tk.X, pady=5)
-        tk.Label(session_frame, text="Session:", anchor=tk.W).pack(side=tk.LEFT)
-        session_entry = tk.Entry(
-            session_frame, textvariable=self.session_number, width=25
+        self.session_text = tk.Text(
+            session_frame,
+            height=2,
+            wrap=tk.WORD,
+            font=("TkDefaultFont", 9),
         )
-        session_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(5, 0))
+        self.session_text.pack(fill=tk.X)
+        # Initialize with default session number
+        self.session_text.insert("1.0", self.session_number.get())
+        self.session_text.bind("<<Modified>>", self._on_session_text_modified)
 
         # Query file display
         query_frame = tk.LabelFrame(steps_frame, text="Selected Query", padx=5, pady=5)
@@ -166,9 +171,10 @@ class WorkflowUI:
             query_frame,
             textvariable=self.selected_query_path,
             anchor=tk.W,
-            wraplength=270,
+            wraplength=370,
             justify=tk.LEFT,
             fg="blue",
+            height=2,
         )
         query_label.pack(fill=tk.X)
 
@@ -238,6 +244,14 @@ class WorkflowUI:
         """Get expanded path from configuration."""
         path = self.path_entries[key].get()
         return Path(path).expanduser().resolve()
+
+    def _on_session_text_modified(self, _event=None):
+        """Update session_number StringVar when Text widget is modified."""
+        # Get current text content (strip trailing newline)
+        session_text = self.session_text.get("1.0", "end-1c").strip()
+        self.session_number.set(session_text)
+        # Reset the modified flag
+        self.session_text.edit_modified(False)
 
     def _log_command(self, command):
         """Log command to output area with highlighting."""
@@ -347,12 +361,13 @@ class WorkflowUI:
     # Step implementations
 
     def _step1_check_tool(self, step_num):
-        """Step 1: Check gh-mrva tool availability."""
-        command = (
+        """Step 1: Check gh-mrva tool availability and create directory structure."""
+        # First create the directory structure in the container
+        setup_command = (
             f"docker exec -i {self.container_name} bash -c "
-            f'"gh-mrva -h"'
+            f'"mkdir -p ~/work-gh/mrva/gh-mrva && gh-mrva -h"'
         )
-        self._execute_command(command, step_num)
+        self._execute_command(setup_command, step_num)
 
     def _step2_setup_config(self, step_num):
         """Step 2: Setup gh-mrva configuration."""
@@ -371,10 +386,13 @@ list_file: $HOME/work-gh/mrva/gh-mrva/gh-mrva-selection.json"""
         self._execute_command(display_command, step_num, shell_command=command)
 
     def _step3_launch_db_selector(self, step_num):
-        """Step 3: Launch DB selector GUI in background."""
+        """Step 3: Launch DB selector GUI in background and copy selection to container."""
         hepc_dir = self._get_path("HEPC Dir")
         metadata_db = self._get_path("Metadata DB")
         selection_json = self._get_path("Selection JSON")
+
+        # Store selection path for later use
+        self.selection_json_path = selection_json
 
         command = (
             f"{hepc_dir}/bin/db-selector-gui "
@@ -383,6 +401,14 @@ list_file: $HOME/work-gh/mrva/gh-mrva/gh-mrva-selection.json"""
         )
 
         self._execute_background_command(command, step_num)
+
+        # Note to user about copying the file
+        self._append_output(
+            "\nNote: After making your selection and clicking 'Export GH-MRVA Format',\n"
+            "the selection file will be written to the host. You'll need to proceed to\n"
+            "the next step to copy it to the container.\n",
+            "normal"
+        )
 
     def _step4_browse_queries(self, step_num):
         """Step 4: Browse and select query file."""
@@ -455,9 +481,10 @@ select fc, "call of fprintf"
                     )
 
     def _step5_submit_job(self, step_num):
-        """Step 5: Submit MRVA job."""
+        """Step 5: Submit MRVA job - copy files to container then submit."""
         query_path = self.selected_query_path.get()
         session = self.session_number.get()
+        selection_json = self._get_path("Selection JSON")
 
         if not query_path:
             self._append_output("Error: No query file selected\n", "error")
@@ -469,14 +496,33 @@ select fc, "call of fprintf"
             self._update_button_color(step_num, "red")
             return
 
+        # Get just the filename for the query
+        query_filename = Path(query_path).name
+        container_query_path = f"~/work-gh/mrva/gh-mrva/{query_filename}"
+
+        # Multi-step command:
+        # 1. Copy selection JSON to container
+        # 2. Copy query file to container
+        # 3. Submit the job
         command = (
+            f"cat '{selection_json}' | "
+            f"docker exec -i {self.container_name} bash -c 'cat > ~/work-gh/mrva/gh-mrva/gh-mrva-selection.json' && "
+            f"cat '{query_path}' | "
+            f"docker exec -i {self.container_name} bash -c 'cat > {container_query_path}' && "
             f"docker exec -i {self.container_name} bash -c '"
             f"cd ~/work-gh/mrva/gh-mrva/ && "
             f"gh-mrva submit --language cpp --session {session} "
-            f"--list mirva-list --query {query_path}'"
+            f"--list mirva-list --query {container_query_path}'"
         )
 
-        self._execute_command(command, step_num)
+        display_command = (
+            f"# Copy selection file and query to container, then submit\n"
+            f"cat {selection_json} | docker exec -i {self.container_name} ... && \n"
+            f"cat {query_path} | docker exec -i {self.container_name} ... && \n"
+            f"docker exec -i {self.container_name} bash -c 'cd ~/work-gh/mrva/gh-mrva/ && gh-mrva submit ...'"
+        )
+
+        self._execute_command(display_command, step_num, shell_command=command)
 
     def _step6_check_status(self, step_num):
         """Step 6: Check job status."""

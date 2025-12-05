@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run python
 # -*- python -*-
 """
-MRVA Workflow UI
+MRVA Host Workflow UI
 
 A Tkinter-based interface for managing the complete MRVA workflow:
 1. Check gh-mrva tool
@@ -13,11 +13,12 @@ A Tkinter-based interface for managing the complete MRVA workflow:
 7. Download results
 
 Provides visual feedback, command logging, and session management.
+Runs on the host and executes commands in the container.
 """
 
 import sys
 from plumbum import cli
-from mrvahepc.workflow_ui import create_gui
+from mrvahepc.host_workflow_ui import create_gui
 
 
 class WorkflowUIApp(cli.Application):
