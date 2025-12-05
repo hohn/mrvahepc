@@ -1,0 +1,57 @@
+#!/usr/bin/env -S uv run python
+# -*- python -*-
+"""
+MRVA Workflow UI
+
+A Tkinter-based interface for managing the complete MRVA workflow:
+1. Check gh-mrva tool
+2. Setup configuration
+3. Launch DB selector GUI
+4. Select query file
+5. Submit MRVA job
+6. Check job status
+7. Download results
+
+Provides visual feedback, command logging, and session management.
+"""
+
+import sys
+from plumbum import cli
+from mrvahepc.workflow_ui import create_gui
+
+
+class WorkflowUIApp(cli.Application):
+    """
+    Launch a GUI for managing the MRVA workflow end-to-end.
+
+    The workflow UI provides a step-by-step interface for:
+    - Validating the gh-mrva tool installation
+    - Configuring gh-mrva settings
+    - Selecting CodeQL databases via the db-selector-gui
+    - Choosing query files for analysis
+    - Submitting variant analysis jobs
+    - Monitoring job status
+    - Downloading results and databases
+
+    All steps execute commands inside the specified Docker container
+    and display real-time output with file path highlighting.
+    """
+
+    container_name = cli.SwitchAttr(
+        "--container-name", str, default="mrva-ghmrva",
+        help="Name of the Docker container to execute commands in (default: mrva-ghmrva)"
+    )
+
+    def main(self):
+        """Launch the workflow UI."""
+        try:
+            create_gui(self.container_name)
+        except Exception as e:
+            print(f"Error launching GUI: {e}", file=sys.stderr)
+            return 1
+
+        return 0
+
+
+if __name__ == "__main__":
+    WorkflowUIApp.run()
