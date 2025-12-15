@@ -99,7 +99,7 @@ class SarifBrowser:
             wrap=tk.WORD,
             width=80,
             height=40,
-            font=('Courier', 12)
+            font=('Courier', 10)
         )
         self.results_text.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
 

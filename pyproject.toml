@@ -9,7 +9,7 @@ description = "HTTP End Point for CodeQL databases"
 readme = {file = "README.org", content-type = "text/plain"}
 authors = [{name = "Michael Hohn", email = "hohn@github.com"}]
 license = {file = "LICENSE"}
-requires-python = ">=3.11"
+requires-python = ">=3.11,<3.14"
 dependencies = [
   "annotated-types==0.7.0",
   "anyio==4.7.0",
