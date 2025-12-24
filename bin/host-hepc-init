@@ -25,7 +25,7 @@ def log(level, message):
 # Generate a CID (cumulative id)
 def generate_cid(cli_version, creation_time, primary_language, sha):
     hash_input = f"{cli_version} {creation_time} {primary_language} {sha}".encode()
-    return hashlib.sha256(hash_input).hexdigest()[:6]
+    return hashlib.sha256(hash_input).hexdigest()[:10]
 
 # Expand environment variables in paths
 def expand_path(path):
