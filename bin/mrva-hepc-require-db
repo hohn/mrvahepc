@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+#
+# Ensure that a CodeQL DB identified by CID exists locally.
+# If missing, fetch from the canonical HTTPS origin.
+#
+# Contract:
+#   stdout: absolute path to local DB directory
+#   stderr: diagnostics
+#   exit 0: DB present locally
+#   exit !=0: invariant could not be established
+#
+
+set -euo pipefail
+
+# -------- configuration --------
+
+: "${MRVA_DB_ORIGIN:=https://hohnlab.org/mrva/values}"
+: "${MRVA_DB_CACHE:=/var/cache/mrva/db}"
+: "${MRVA_TMP:=/var/cache/mrva/.tmp}"
+
+# -------- helpers --------
+
+die() {
+    echo "mrva-hepc-require-db: $*" >&2
+    exit 1
+}
+
+# -------- arguments --------
+
+[ "$#" -eq 1 ] || die "usage: mrva-hepc-require-db <cid>"
+
+CID="$1"
+
+# very light sanity check; adjust if your CID format differs
+case "$CID" in
+    [0-9a-f]*)
+        ;;
+    *)
+        die "invalid CID: $CID"
+        ;;
+esac
+
+SHARD="${CID:0:2}"
+LOCAL_DIR="$MRVA_DB_CACHE/$SHARD/$CID"
+
+# -------- fast path --------
+
+if [ -d "$LOCAL_DIR" ]; then
+    echo "$LOCAL_DIR"
+    exit 0
+fi
+
+# -------- slow path: fetch --------
+
+mkdir -p "$MRVA_DB_CACHE/$SHARD"
+mkdir -p "$MRVA_TMP"
+
+TMP_BASE="$MRVA_TMP/$CID.$$"
+TMP_TAR="$TMP_BASE.tar.zst"
+TMP_DIR="$TMP_BASE.dir"
+
+URL="$MRVA_DB_ORIGIN/$SHARD/$CID.tar.zst"
+
+echo "mrva-hepc-require-db: fetching $CID" >&2
+echo "  from $URL" >&2
+
+# fetch
+curl -fL "$URL" -o "$TMP_TAR" \
+    || die "download failed"
+
+# unpack
+mkdir "$TMP_DIR"
+tar --use-compress-program=unzstd -xf "$TMP_TAR" -C "$TMP_DIR" \
+    || die "extract failed"
+
+# optional: structural sanity check
+[ -d "$TMP_DIR/database" ] \
+    || die "invalid DB layout (missing database/)"
+
+# optional: CID verification hook
+# verify_cid "$TMP_DIR" "$CID"
+
+# atomic install
+mv "$TMP_DIR" "$LOCAL_DIR"
+
+# cleanup
+rm -f "$TMP_TAR"
+
+echo "$LOCAL_DIR"
