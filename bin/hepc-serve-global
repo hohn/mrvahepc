@@ -1,0 +1,96 @@
+#!/usr/bin/env -S uv run python
+# -*- python -*-
+"""
+invariant:  hepc-serve-global requires a pre-existing, complete,
+            self-consistent metadata set.  That is encoded in the urls found in
+            the sqlite db at metadata_db_path.
+
+"""
+import logging
+import sqlite3
+from pathlib import Path
+from plumbum import cli
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import Response
+import uvicorn
+import json
+
+# Logging configuration
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[logging.StreamHandler()]
+)
+logger = logging.getLogger(__name__)
+
+# FastAPI application
+app = FastAPI()
+
+# Fixed path to metadata db, to be provided externally
+metadata_db_path = Path("/mrva/values/metadata.sql")
+
+@app.get("/index")
+@app.get("/api/v1/latest_results/codeql-all")
+def serve_metadata():
+    """
+    Serve metadata from the SQLite database as JSONL.
+    """
+    if not metadata_db_path.exists():
+        logger.error("metadata.sql not found.")
+        raise HTTPException(status_code=404, detail="metadata.sql not found")
+
+    try:
+        conn = sqlite3.connect(str(metadata_db_path))
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM metadata")
+        rows = cursor.fetchall()
+        conn.close()
+
+        jsonl_lines = [json.dumps(dict(row)) for row in rows]
+        jsonl_content = "\n".join(jsonl_lines)
+
+        logger.info(f"Serving {len(jsonl_lines)} metadata records as JSONL")
+        return Response(content=jsonl_content, media_type="application/x-ndjson")
+
+    except Exception as e:
+        logger.error(f"Error querying metadata database: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+
+
+@app.middleware("http")
+async def log_request(request, call_next):
+    logger.info(f"Incoming request: {request.method} {request.url}")
+    response = await call_next(request)
+    return response
+
+
+class MRVAHepc(cli.Application):
+    """
+    MRVAHepc serves metadata only.
+
+    HTTP endpoints:
+    1. /index
+    2. /api/v1/latest_results/codeql-all
+    """
+
+    host = cli.SwitchAttr(
+        "--host",
+        str,
+        default="127.0.0.1",
+        help="Host address for the HTTP server",
+    )
+    port = cli.SwitchAttr(
+        "--port",
+        int,
+        default=8070,
+        help="Port for the HTTP server",
+    )
+
+    def main(self):
+        logger.info(f"Starting server at {self.host}:{self.port}")
+        uvicorn.run(app, host=self.host, port=self.port)
+
+
+if __name__ == "__main__":
+    MRVAHepc.run()

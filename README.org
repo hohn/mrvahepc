@@ -1,4 +1,40 @@
 * Introduction to hepc -- HTTP End Point for CodeQL
+** Note on Global Data
+   hepc requires a pre-existing, complete, self-consistent metadata
+   set.  Creation and maintenance of this metadata is intentionally
+   outside the scope of hepc itself.
+
+   There are several supported ways to obtain such a metadata set:
+
+   1. The sections [[*Usage Sample for Containers][Usage Sample for Containers]] and
+      [[*Form link to DBs from filesystem, create metadata.sql][Form link to DBs from filesystem, create metadata.sql]] illustrate how to
+      scan local file systems and generate a compatible metadata.sql.
+      This approach is appropriate if you maintain your own CodeQL
+      databases.
+
+      In this case, host-hepc-init and host-hepc-serve can be used
+      without significant changes.
+
+   2. hepc-serve-global references a curated collection of open-source
+      projects' CodeQL databases.  This requires a network connection
+      but no local setup.
+
+      The collection is currently around 70 GB and is expected to grow
+      beyond 160 GB; it is therefore unsuitable for inclusion in a
+      Docker image.  At present, it contains approximately 3000
+      databases.
+
+      For experimentation at medium scale, this is the recommended
+      approach.
+
+   3. host-hepc-serve implements a simple HTTP API used by the other
+      MRVA containers.  You may replace this service entirely by
+      implementing a compatible server and adjusting the container
+      wiring accordingly.
+
+   In all cases, hepc operates strictly as a reader of metadata and
+   does not create, modify, or repair metadata sets.
+
 ** Usage Sample for Containers
    This is for container preparation; all operations produce full, standalone
    copies.  For a host service with full storage, see 

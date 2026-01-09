@@ -21,5 +21,8 @@ setup(
     packages=find_packages(),
     install_requires=load_dependencies(),
     scripts=["bin/host-hepc-init", "bin/host-hepc-serve",
-             "bin/mc-hepc-init", "bin/mc-hepc-serve"],
+             "bin/mc-hepc-init", 
+             "bin/mc-hepc-serve",
+             "bin/hepc-serve-global"
+             ],
 )

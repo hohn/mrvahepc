@@ -45,6 +45,7 @@ dependencies = [
 [tool.setuptools]
 packages = ["mrvahepc"]
 script-files = [
+             "bin/hepc-serve-global",
              "bin/host-hepc-init",
              "bin/host-hepc-serve",
              "bin/mc-hepc-init", 
