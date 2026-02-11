@@ -11,6 +11,7 @@ This module provides a graphical interface for executing the 7-step MRVA workflo
 7. Download results
 """
 
+import sys
 import tkinter as tk
 from tkinter import filedialog, ttk
 import subprocess
@@ -22,16 +23,67 @@ from datetime import datetime
 from queue import Queue, Empty
 
 
+def parse_show_state_output(output_text):
+    """
+    Parse the output of show-state.py script to extract path values.
+
+    Args:
+        output_text: Text output from show-state.py (typically from stdin)
+
+    Returns:
+        Dictionary with keys matching the UI path labels:
+        - "GH-MRVA Dir"
+        - "HEPC Dir"
+        - "Metadata DB"
+        - "Selection JSON"
+    """
+    try:
+        paths = {}
+        lines = output_text.splitlines()
+
+        # Parse the "KNOWN MRVA STATE" section
+        # Format: "KEY_NAME              = value"
+        for line in lines:
+            line = line.strip()
+
+            # Extract GH_MRVA_DIR
+            if line.startswith("GH_MRVA_DIR"):
+                value = line.split("=", 1)[1].strip()
+                paths["GH-MRVA Dir"] = value
+
+            # Extract HEPC_DIR
+            elif line.startswith("HEPC_DIR"):
+                value = line.split("=", 1)[1].strip()
+                paths["HEPC Dir"] = value
+
+            # Extract METADATA_DB
+            elif line.startswith("METADATA_DB"):
+                value = line.split("=", 1)[1].strip()
+                paths["Metadata DB"] = value
+
+            # Extract SELECTION_JSON
+            elif line.startswith("SELECTION_JSON"):
+                value = line.split("=", 1)[1].strip()
+                paths["Selection JSON"] = value
+
+        return paths
+
+    except Exception as e:
+        print(f"Warning: Failed to parse show-state.py output: {e}", file=sys.stderr)
+        return {}
+
+
 class WorkflowUI:
     """Main UI class for MRVA workflow management."""
 
-    def __init__(self, root, container_name="mrva-ghmrva"):
+    def __init__(self, root, container_name="mrva-ghmrva", initial_paths=None):
         """
         Initialize the workflow UI.
 
         Args:
             root: Tkinter root window
             container_name: Name of the Docker container to execute commands in
+            initial_paths: Optional dictionary of paths to populate the UI with
         """
         self.root = root
         self.container_name = container_name
@@ -45,8 +97,8 @@ class WorkflowUI:
         self.session_number = tk.StringVar()
         self.output_queue = Queue()
 
-        # Initialize paths from environment
-        self._init_paths()
+        # Initialize paths from environment or provided values
+        self._init_paths(initial_paths)
 
         # Generate default session number
         self._generate_session_number()
@@ -57,9 +109,13 @@ class WorkflowUI:
         # Start queue processor for thread-safe UI updates
         self._process_output_queue()
 
-    def _init_paths(self):
-        """Initialize path configuration from environment variables."""
-        self.paths = {
+    def _init_paths(self, initial_paths=None):
+        """Initialize path configuration from environment variables or provided values.
+
+        Args:
+            initial_paths: Optional dictionary of paths to use instead of environment variables
+        """
+        defaults = {
             "GH-MRVA Dir": os.getenv("MRVA_GH_MRVA_DIR", "~/work-gh/mrva/gh-mrva"),
             "HEPC Dir": os.getenv("MRVA_HEPC_DIR", "~/work-gh/mrva/mrvahepc"),
             "Metadata DB": os.getenv(
@@ -69,6 +125,12 @@ class WorkflowUI:
                 "MRVA_SELECTION_JSON", "~/work-gh/mrva/gh-mrva/gh-mrva-selection.json"
             ),
         }
+
+        # Use provided paths or fall back to defaults
+        if initial_paths:
+            self.paths = {k: initial_paths.get(k, v) for k, v in defaults.items()}
+        else:
+            self.paths = defaults
 
     def _generate_session_number(self):
         """Generate a timestamp-based session number."""
@@ -362,18 +424,20 @@ class WorkflowUI:
 
     def _step1_check_tool(self, step_num):
         """Step 1: Check gh-mrva tool availability and create directory structure."""
+        gh_mrva_dir = self._get_path("GH-MRVA Dir")
         # First create the directory structure in the container
         setup_command = (
             f"docker exec -i {self.container_name} bash -c "
-            f'"mkdir -p ~/work-gh/mrva/gh-mrva && gh-mrva -h"'
+            f'"mkdir -p {gh_mrva_dir} && gh-mrva -h"'
         )
         self._execute_command(setup_command, step_num)
 
     def _step2_setup_config(self, step_num):
         """Step 2: Setup gh-mrva configuration."""
-        config_content = """codeql_path: not-used/codeql-path
+        selection_json = self._get_path("Selection JSON")
+        config_content = f"""codeql_path: not-used/codeql-path
 controller: not-used/mirva-controller
-list_file: $HOME/work-gh/mrva/gh-mrva/gh-mrva-selection.json"""
+list_file: {selection_json}"""
 
         command = (
             f"docker exec -i {self.container_name} bash -c '"
@@ -382,8 +446,7 @@ list_file: $HOME/work-gh/mrva/gh-mrva/gh-mrva-selection.json"""
             f"echo \"Configuration created at ~/.config/gh-mrva/config.yml\"'"
         )
 
-        display_command = f"docker exec -i {self.container_name} bash -c 'mkdir -p ~/.config/gh-mrva && cat > ~/.config/gh-mrva/config.yml <<EOF...'"
-        self._execute_command(display_command, step_num, shell_command=command)
+        self._execute_command(command, step_num)
 
     def _step3_launch_db_selector(self, step_num):
         """Step 3: Launch DB selector GUI in background and copy selection to container."""
@@ -485,6 +548,7 @@ select fc, "call of fprintf"
         query_path = self.selected_query_path.get()
         session = self.session_number.get()
         selection_json = self._get_path("Selection JSON")
+        gh_mrva_dir = self._get_path("GH-MRVA Dir")
 
         if not query_path:
             self._append_output("Error: No query file selected\n", "error")
@@ -498,7 +562,8 @@ select fc, "call of fprintf"
 
         # Get just the filename for the query
         query_filename = Path(query_path).name
-        container_query_path = f"~/work-gh/mrva/gh-mrva/{query_filename}"
+        container_selection_json = f"{gh_mrva_dir}/gh-mrva-selection.json"
+        container_query_path = f"{gh_mrva_dir}/{query_filename}"
 
         # Multi-step command:
         # 1. Copy selection JSON to container
@@ -506,27 +571,21 @@ select fc, "call of fprintf"
         # 3. Submit the job
         command = (
             f"cat '{selection_json}' | "
-            f"docker exec -i {self.container_name} bash -c 'cat > ~/work-gh/mrva/gh-mrva/gh-mrva-selection.json' && "
+            f"docker exec -i {self.container_name} bash -c 'cat > {container_selection_json}' && "
             f"cat '{query_path}' | "
             f"docker exec -i {self.container_name} bash -c 'cat > {container_query_path}' && "
-            f"docker exec -i {self.container_name} bash -c '"
-            f"cd ~/work-gh/mrva/gh-mrva/ && "
+            f"docker exec {self.container_name} bash -c '"
+            f"cd {gh_mrva_dir} && "
             f"gh-mrva submit --language cpp --session {session} "
             f"--list mirva-list --query {container_query_path}'"
         )
 
-        display_command = (
-            f"# Copy selection file and query to container, then submit\n"
-            f"cat {selection_json} | docker exec -i {self.container_name} ... && \n"
-            f"cat {query_path} | docker exec -i {self.container_name} ... && \n"
-            f"docker exec -i {self.container_name} bash -c 'cd ~/work-gh/mrva/gh-mrva/ && gh-mrva submit ...'"
-        )
-
-        self._execute_command(display_command, step_num, shell_command=command)
+        self._execute_command(command, step_num)
 
     def _step6_check_status(self, step_num):
         """Step 6: Check job status."""
         session = self.session_number.get()
+        gh_mrva_dir = self._get_path("GH-MRVA Dir")
 
         if not session:
             self._append_output("Error: No session number provided\n", "error")
@@ -534,8 +593,9 @@ select fc, "call of fprintf"
             return
 
         command = (
-            f"docker exec -i {self.container_name} bash -c "
-            f'"gh-mrva status --session {session}"'
+            f"docker exec -i {self.container_name} bash -c '"
+            f"cd {gh_mrva_dir} && "
+            f"gh-mrva status --session {session}'"
         )
 
         self._execute_command(command, step_num)
@@ -543,6 +603,7 @@ select fc, "call of fprintf"
     def _step7_download_results(self, step_num):
         """Step 7: Download results."""
         session = self.session_number.get()
+        gh_mrva_dir = self._get_path("GH-MRVA Dir")
 
         if not session:
             self._append_output("Error: No session number provided\n", "error")
@@ -551,7 +612,7 @@ select fc, "call of fprintf"
 
         command = (
             f"docker exec -i {self.container_name} bash -c '"
-            f"cd ~/work-gh/mrva/gh-mrva/ && "
+            f"cd {gh_mrva_dir} && "
             f"gh-mrva download --session {session} --download-dbs "
             f"--output-dir {session}'"
         )
@@ -559,13 +620,14 @@ select fc, "call of fprintf"
         self._execute_command(command, step_num)
 
 
-def create_gui(container_name="mrva-ghmrva"):
+def create_gui(container_name="mrva-ghmrva", initial_paths=None):
     """
     Create and run the workflow GUI.
 
     Args:
         container_name: Name of the Docker container
+        initial_paths: Optional dictionary of paths to populate the UI with
     """
     root = tk.Tk()
-    app = WorkflowUI(root, container_name)
+    app = WorkflowUI(root, container_name, initial_paths)
     root.mainloop()

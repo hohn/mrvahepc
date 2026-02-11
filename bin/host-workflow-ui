@@ -17,9 +17,9 @@ Runs on the host and executes commands in the container.
 """
 
 import sys
+from pathlib import Path
 from plumbum import cli
-from mrvahepc.host_workflow_ui import create_gui
-
+from mrvahepc.host_workflow_ui import create_gui, parse_show_state_output
 
 class WorkflowUIApp(cli.Application):
     """
@@ -43,10 +43,33 @@ class WorkflowUIApp(cli.Application):
         help="Name of the Docker container to execute commands in (default: mrva-ghmrva)"
     )
 
+    auto_populate = cli.Flag(
+        "--auto-populate",
+        help="Automatically populate paths from show-state.py output piped to stdin"
+    )
+
     def main(self):
         """Launch the workflow UI."""
         try:
-            create_gui(self.container_name)
+            initial_paths = None
+
+            if self.auto_populate:
+                # Read from stdin
+                if not sys.stdin.isatty():
+                    print("Reading show-state.py output from stdin...", file=sys.stderr)
+                    stdin_content = sys.stdin.read()
+                    initial_paths = parse_show_state_output(stdin_content)
+                    if initial_paths:
+                        print("Successfully loaded paths:", file=sys.stderr)
+                        for key, value in initial_paths.items():
+                            print(f"  {key}: {value}", file=sys.stderr)
+                    else:
+                        print("Warning: No paths extracted from stdin", file=sys.stderr)
+                else:
+                    print("Warning: --auto-populate specified but no input piped to stdin", file=sys.stderr)
+                    print("Usage: (cd /path/to/mrva-system && ./scripts/show-state.py) | ./bin/host-workflow-ui --auto-populate", file=sys.stderr)
+
+            create_gui(self.container_name, initial_paths)
         except Exception as e:
             print(f"Error launching GUI: {e}", file=sys.stderr)
             return 1
