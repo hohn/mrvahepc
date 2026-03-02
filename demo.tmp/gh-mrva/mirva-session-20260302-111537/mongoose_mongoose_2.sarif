@@ -1,0 +1,1177 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "artifacts": [
+        {
+          "location": {
+            "index": 0,
+            "uri": "test/pack.c",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 1,
+            "uri": "examples/arduino/sim800-mqtt/sim800-mqtt.ino",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 2,
+            "uri": "examples/arduino/esp32-mqtt/esp32-mqtt.ino",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 3,
+            "uri": "examples/arduino/w5500-mqtt/w5500-mqtt.ino",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 4,
+            "uri": "examples/arduino/teensy41-http/teensy41-http.ino",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 5,
+            "uri": "examples/arduino/esp32-http/esp32-http.ino",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 6,
+            "uri": "examples/arduino/w5500-http/w5500-http.ino",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 7,
+            "uri": "tutorials/core/embedded-filesystem/web_root/main.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 8,
+            "uri": "examples/device-dashboard/web_root/components.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 9,
+            "uri": "examples/modbus-dashboard/tailwind.config.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 10,
+            "uri": "examples/modbus-dashboard/web_root/main.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 11,
+            "uri": "reference-projects/windows-macos-linux/web-ui-dashboard/tailwind.config.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 12,
+            "uri": "examples/wifi-router-dashboard/tailwind.config.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 13,
+            "uri": "examples/uart-bridge/web_root/main.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 14,
+            "uri": "examples/wifi-router-dashboard/web_root/main.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 15,
+            "uri": "reference-projects/windows-macos-linux/web-ui-dashboard/pack.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 16,
+            "uri": "reference-projects/windows-macos-linux/web-ui-dashboard/web_root/components.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 17,
+            "uri": "examples/mqtt-dashboard/dashboard/tailwind.config.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 18,
+            "uri": "tutorials/webui/webui-preact/web_root/main.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 19,
+            "uri": "test/pack.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 20,
+            "uri": "tutorials/webui/webui-login/web_root/main.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 21,
+            "uri": "tutorials/websocket/json-rpc-over-websocket/web_root/rpc-over-websocket.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 22,
+            "uri": "test/data/empty.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 23,
+            "uri": "tutorials/http/file-upload-multiple-posts/web_root/app.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 24,
+            "uri": "reference-projects/windows-macos-linux/web-ui-dashboard/web_root/main.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 25,
+            "uri": "examples/device-dashboard/tailwind.config.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 26,
+            "uri": "examples/mqtt-dashboard/dashboard/main.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 27,
+            "uri": "examples/device-dashboard/web_root/main.js",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 28,
+            "uri": "examples/micropython/main.py",
+            "uriBaseId": "%SRCROOT%"
+          }
+        }
+      ],
+      "columnKind": "utf16CodeUnits",
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolExecutionNotifications": [
+            {
+              "descriptor": {
+                "id": "cpp/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 1,
+                      "uri": "examples/arduino/sim800-mqtt/sim800-mqtt.ino",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "cpp/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 2,
+                      "uri": "examples/arduino/esp32-mqtt/esp32-mqtt.ino",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "cpp/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 3,
+                      "uri": "examples/arduino/w5500-mqtt/w5500-mqtt.ino",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "cpp/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 4,
+                      "uri": "examples/arduino/teensy41-http/teensy41-http.ino",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "cpp/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 5,
+                      "uri": "examples/arduino/esp32-http/esp32-http.ino",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "cpp/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 6,
+                      "uri": "examples/arduino/w5500-http/w5500-http.ino",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 7,
+                      "uri": "tutorials/core/embedded-filesystem/web_root/main.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 8,
+                      "uri": "examples/device-dashboard/web_root/components.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 9,
+                      "uri": "examples/modbus-dashboard/tailwind.config.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 10,
+                      "uri": "examples/modbus-dashboard/web_root/main.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 11,
+                      "uri": "reference-projects/windows-macos-linux/web-ui-dashboard/tailwind.config.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 12,
+                      "uri": "examples/wifi-router-dashboard/tailwind.config.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 13,
+                      "uri": "examples/uart-bridge/web_root/main.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 14,
+                      "uri": "examples/wifi-router-dashboard/web_root/main.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 15,
+                      "uri": "reference-projects/windows-macos-linux/web-ui-dashboard/pack.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 16,
+                      "uri": "reference-projects/windows-macos-linux/web-ui-dashboard/web_root/components.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 17,
+                      "uri": "examples/mqtt-dashboard/dashboard/tailwind.config.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 18,
+                      "uri": "tutorials/webui/webui-preact/web_root/main.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 19,
+                      "uri": "test/pack.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 20,
+                      "uri": "tutorials/webui/webui-login/web_root/main.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 21,
+                      "uri": "tutorials/websocket/json-rpc-over-websocket/web_root/rpc-over-websocket.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 22,
+                      "uri": "test/data/empty.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 23,
+                      "uri": "tutorials/http/file-upload-multiple-posts/web_root/app.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 24,
+                      "uri": "reference-projects/windows-macos-linux/web-ui-dashboard/web_root/main.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 25,
+                      "uri": "examples/device-dashboard/tailwind.config.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 26,
+                      "uri": "examples/mqtt-dashboard/dashboard/main.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "js/baseline/expected-extracted-files",
+                "index": 1
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 27,
+                      "uri": "examples/device-dashboard/web_root/main.js",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "py/baseline/expected-extracted-files",
+                "index": 2
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 28,
+                      "uri": "examples/micropython/main.py",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "semmle.formatSpecifier": "sarif-latest"
+      },
+      "results": [
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "test/pack.c",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 65,
+                  "snippet": {
+                    "text": "      strip_prefix = argv[++i];\n    } else if (strcmp(argv[i], \"-h\") == 0 || strcmp(argv[i], \"--help\") == 0) {\n      fprintf(stderr, \"Usage: %s[-s STRIP_PREFIX] files...\\n\", argv[0]);\n      exit(EXIT_FAILURE);\n    } else {\n"
+                  },
+                  "startLine": 61
+                },
+                "region": {
+                  "endColumn": 14,
+                  "startColumn": 7,
+                  "startLine": 63
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "8b2df376412e9e7b:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "test/pack.c",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 71,
+                  "snippet": {
+                    "text": "      FILE *fp = fopen(argv[i], \"rb\");\n      if (fp == NULL) {\n        fprintf(stderr, \"Cannot open [%s]: %s\\n\", argv[i], strerror(errno));\n        exit(EXIT_FAILURE);\n      }\n"
+                  },
+                  "startLine": 67
+                },
+                "region": {
+                  "endColumn": 16,
+                  "startColumn": 9,
+                  "startLine": 69
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "e7540c5d204a87be:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "CodeQL",
+          "notifications": [
+            {
+              "defaultConfiguration": {
+                "enabled": true
+              },
+              "fullDescription": {
+                "text": "Files appearing in the source archive that are expected to be extracted."
+              },
+              "id": "cpp/baseline/expected-extracted-files",
+              "name": "cpp/baseline/expected-extracted-files",
+              "properties": {
+                "tags": [
+                  "expected-extracted-files",
+                  "telemetry"
+                ]
+              },
+              "shortDescription": {
+                "text": "Expected extracted files"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "enabled": true
+              },
+              "fullDescription": {
+                "text": "Files appearing in the source archive that are expected to be extracted."
+              },
+              "id": "js/baseline/expected-extracted-files",
+              "name": "js/baseline/expected-extracted-files",
+              "properties": {
+                "tags": [
+                  "expected-extracted-files",
+                  "telemetry"
+                ]
+              },
+              "shortDescription": {
+                "text": "Expected extracted files"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "enabled": true
+              },
+              "fullDescription": {
+                "text": "Files appearing in the source archive that are expected to be extracted."
+              },
+              "id": "py/baseline/expected-extracted-files",
+              "name": "py/baseline/expected-extracted-files",
+              "properties": {
+                "tags": [
+                  "expected-extracted-files",
+                  "telemetry"
+                ]
+              },
+              "shortDescription": {
+                "text": "Expected extracted files"
+              }
+            }
+          ],
+          "organization": "GitHub",
+          "rules": [
+            {
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "fullDescription": {
+                "text": "Find calls to plain fprintf"
+              },
+              "id": "cpp-fprintf-call",
+              "name": "cpp-fprintf-call",
+              "properties": {
+                "description": "Find calls to plain fprintf",
+                "id": "cpp-fprintf-call",
+                "kind": "problem",
+                "name": "findPrintf",
+                "problem.severity": "warning"
+              },
+              "shortDescription": {
+                "text": "findPrintf"
+              }
+            }
+          ],
+          "semanticVersion": "2.23.8"
+        },
+        "extensions": [
+          {
+            "locations": [
+              {
+                "description": {
+                  "text": "The QL pack root directory."
+                },
+                "properties": {
+                  "tags": [
+                    "CodeQL/LocalPackRoot"
+                  ]
+                },
+                "uri": "file:///tmp/d8ba8562-e2d4-4694-915a-832ba3f5aa73/pack/"
+              },
+              {
+                "description": {
+                  "text": "The QL pack definition file."
+                },
+                "properties": {
+                  "tags": [
+                    "CodeQL/LocalPackDefinitionFile"
+                  ]
+                },
+                "uri": "file:///tmp/d8ba8562-e2d4-4694-915a-832ba3f5aa73/pack/qlpack.yml"
+              }
+            ],
+            "name": "codeql-remote/query",
+            "semanticVersion": "0.0.0"
+          },
+          {
+            "locations": [
+              {
+                "description": {
+                  "text": "The QL pack root directory."
+                },
+                "properties": {
+                  "tags": [
+                    "CodeQL/LocalPackRoot"
+                  ]
+                },
+                "uri": "file:///tmp/d8ba8562-e2d4-4694-915a-832ba3f5aa73/pack/.codeql/libraries/codeql/cpp-all/7.1.1/"
+              },
+              {
+                "description": {
+                  "text": "The QL pack definition file."
+                },
+                "properties": {
+                  "tags": [
+                    "CodeQL/LocalPackDefinitionFile"
+                  ]
+                },
+                "uri": "file:///tmp/d8ba8562-e2d4-4694-915a-832ba3f5aa73/pack/.codeql/libraries/codeql/cpp-all/7.1.1/qlpack.yml"
+              }
+            ],
+            "name": "codeql/cpp-all",
+            "semanticVersion": "7.1.1+fb67f93a86689e46c2d932ea2371b684b31f379e"
+          }
+        ]
+      }
+    }
+  ],
+  "version": "2.1.0"
+}

@@ -1,0 +1,3740 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "artifacts": [
+        {
+          "location": {
+            "index": 0,
+            "uri": "src/inotifywait.cpp",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 1,
+            "uri": "libinotifytools/src/inotifytools.cpp",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 2,
+            "uri": "src/common.cpp",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 3,
+            "uri": "src/inotifywatch.cpp",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 4,
+            "uri": "libinotifytools/src/example.cpp",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 5,
+            "uri": "libinotifytools/src/test.cpp",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 6,
+            "uri": "libinotifytools/src/stats.cpp",
+            "uriBaseId": "%SRCROOT%"
+          }
+        },
+        {
+          "location": {
+            "index": 7,
+            "uri": "libinotifytools/src/redblack.cpp",
+            "uriBaseId": "%SRCROOT%"
+          }
+        }
+      ],
+      "columnKind": "utf16CodeUnits",
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolExecutionNotifications": [
+            {
+              "descriptor": {
+                "id": "cpp/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 4,
+                      "uri": "libinotifytools/src/example.cpp",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "cpp/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 5,
+                      "uri": "libinotifytools/src/test.cpp",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "cpp/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 1,
+                      "uri": "libinotifytools/src/inotifytools.cpp",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "cpp/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 3,
+                      "uri": "src/inotifywatch.cpp",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "cpp/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 6,
+                      "uri": "libinotifytools/src/stats.cpp",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "cpp/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 2,
+                      "uri": "src/common.cpp",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "cpp/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 0,
+                      "uri": "src/inotifywait.cpp",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "descriptor": {
+                "id": "cpp/baseline/expected-extracted-files",
+                "index": 0
+              },
+              "level": "none",
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "index": 7,
+                      "uri": "libinotifytools/src/redblack.cpp",
+                      "uriBaseId": "%SRCROOT%"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": ""
+              },
+              "properties": {
+                "formattedMessage": {
+                  "text": ""
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "semmle.formatSpecifier": "sarif-latest"
+      },
+      "results": [
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 665,
+                  "snippet": {
+                    "text": "\t\t\t// --filename or -f\n\t\t\tcase 'f':\n\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\"The '--filename' option no longer \"\n\t\t\t\t\t\"exists.  \"\n"
+                  },
+                  "startLine": 661
+                },
+                "region": {
+                  "endColumn": 12,
+                  "startColumn": 5,
+                  "startLine": 663
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "78d574f9213532af:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 722,
+                  "snippet": {
+                    "text": "\t\t\tcase 'z':\n\t\t\t\tif (*fromfile) {\n\t\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\t\"Multiple --fromfile options \"\n\t\t\t\t\t\t\"given.\\n\");\n"
+                  },
+                  "startLine": 718
+                },
+                "region": {
+                  "endColumn": 13,
+                  "startColumn": 6,
+                  "startLine": 720
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "b3bf19f34d4e9b6f:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 734,
+                  "snippet": {
+                    "text": "\t\t\tcase 'o':\n\t\t\t\tif (*outfile) {\n\t\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\t\"Multiple --outfile options \"\n\t\t\t\t\t\t\"given.\\n\");\n"
+                  },
+                  "startLine": 730
+                },
+                "region": {
+                  "endColumn": 13,
+                  "startColumn": 6,
+                  "startLine": 732
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "318a4d7c4c1d1140:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 758,
+                  "snippet": {
+                    "text": "\t\t\t\t// If optarg was invalid, abort\n\t\t\t\tif (new_event == -1) {\n\t\t\t\t\tfprintf(\n\t\t\t\t\t    stderr,\n\t\t\t\t\t    \"'%s' is not a valid event!  Run \"\n"
+                  },
+                  "startLine": 754
+                },
+                "region": {
+                  "endColumn": 13,
+                  "startColumn": 6,
+                  "startLine": 756
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "e9c6c9c5377115fb:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 783,
+                  "snippet": {
+                    "text": "\n\tif (*exc_regex \u0026\u0026 *exc_iregex) {\n\t\tfprintf(stderr,\n\t\t\t\"--exclude and --excludei cannot both be specified.\\n\");\n\t\treturn false;\n"
+                  },
+                  "startLine": 779
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 781
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "dce8854259abdcb9:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 789,
+                  "snippet": {
+                    "text": "\n\tif (*inc_regex \u0026\u0026 *inc_iregex) {\n\t\tfprintf(stderr,\n\t\t\t\"--include and --includei cannot both be specified.\\n\");\n\t\treturn false;\n"
+                  },
+                  "startLine": 785
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 787
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "efdda50d4e86a63c:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 796,
+                  "snippet": {
+                    "text": "\tif ((*inc_regex \u0026\u0026 *exc_regex) || (*inc_regex \u0026\u0026 *exc_iregex) ||\n\t    (*inc_iregex \u0026\u0026 *exc_regex) || (*inc_iregex \u0026\u0026 *exc_iregex)) {\n\t\tfprintf(\n\t\t    stderr,\n\t\t    \"include and exclude regexp cannot both be specified.\\n\");\n"
+                  },
+                  "startLine": 792
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 794
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "cd721ee0665ec0f5:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 803,
+                  "snippet": {
+                    "text": "\n\tif (*format \u0026\u0026 *csv) {\n\t\tfprintf(stderr, \"-c and --format cannot both be specified.\\n\");\n\t\treturn false;\n\t}\n"
+                  },
+                  "startLine": 799
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 801
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "cae0ce77e6cda8ae:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 808,
+                  "snippet": {
+                    "text": "\n\tif (!*format \u0026\u0026 *no_newline) {\n\t\tfprintf(stderr,\n\t\t\t\"--no-newline cannot be specified without --format.\\n\");\n\t\treturn false;\n"
+                  },
+                  "startLine": 804
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 806
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "d4a61fd625ddfbb7:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 814,
+                  "snippet": {
+                    "text": "\n\tif (!*format \u0026\u0026 *timefmt) {\n\t\tfprintf(stderr,\n\t\t\t\"--timefmt cannot be specified without --format.\\n\");\n\t\treturn false;\n"
+                  },
+                  "startLine": 810
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 812
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "a0855c7fcd91996f:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 820,
+                  "snippet": {
+                    "text": "\n\tif (*format \u0026\u0026 strstr(*format, \"%T\") \u0026\u0026 !*timefmt) {\n\t\tfprintf(stderr,\n\t\t\t\"%%T is in --format string, but --timefmt was not \"\n\t\t\t\"specified.\\n\");\n"
+                  },
+                  "startLine": 816
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 818
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "7c0c1c29d52833ea:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 827,
+                  "snippet": {
+                    "text": "\n\tif (*daemon \u0026\u0026 *outfile == NULL) {\n\t\tfprintf(stderr, \"-o must be specified with -d.\\n\");\n\t\treturn false;\n\t}\n"
+                  },
+                  "startLine": 823
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 825
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "c8aee8bb49db578b:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 832,
+                  "snippet": {
+                    "text": "\n\tif (exclude_count \u003e 1) {\n\t\tfprintf(stderr, \"--exclude: %s\", regex_warning);\n\t}\n\n"
+                  },
+                  "startLine": 828
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 830
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "2b0222a15f653ebb:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 836,
+                  "snippet": {
+                    "text": "\n\tif (excludei_count \u003e 1) {\n\t\tfprintf(stderr, \"--excludei: %s\", regex_warning);\n\t}\n\n"
+                  },
+                  "startLine": 832
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 834
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "a722310c9371e79c:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 218,
+                  "snippet": {
+                    "text": "\t    (exc_iregex \u0026\u0026 !inotifytools_ignore_events_by_regex(\n\t\t\t       exc_iregex, REG_EXTENDED | REG_ICASE, recursive))) {\n\t\tfprintf(stderr, \"Error in `exclude' regular expression.\\n\");\n\t\treturn EXIT_FAILURE;\n\t}\n"
+                  },
+                  "startLine": 214
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 216
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "3506dd62aeb8741:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 225,
+                  "snippet": {
+                    "text": "\t    (inc_iregex \u0026\u0026 !inotifytools_ignore_events_by_inverted_regex(\n\t\t\t       inc_iregex, REG_EXTENDED | REG_ICASE, recursive))) {\n\t\tfprintf(stderr, \"Error in `include' regular expression.\\n\");\n\t\treturn EXIT_FAILURE;\n\t}\n"
+                  },
+                  "startLine": 221
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 223
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "744d6a3f2af72556:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 251,
+                  "snippet": {
+                    "text": "\n\tif (0 == list.watch_files_[0]) {\n\t\tfprintf(stderr, \"No files specified to watch!\\n\");\n\n\t\treturn EXIT_FAILURE;\n"
+                  },
+                  "startLine": 247
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 249
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "a298c9b5ab28d54e:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 261,
+                  "snippet": {
+                    "text": "\t\tchar* logfile = (char*)calloc(PATH_MAX + 1, sizeof(char));\n\t\tif (realpath(outfile, logfile) == NULL) {\n\t\t\tfprintf(stderr, \"%s: %s\\n\", strerror(errno), outfile);\n\t\t\tfree(logfile);\n\t\t\treturn EXIT_FAILURE;\n"
+                  },
+                  "startLine": 257
+                },
+                "region": {
+                  "endColumn": 11,
+                  "startColumn": 4,
+                  "startLine": 259
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "398251981ea92e59:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 267,
+                  "snippet": {
+                    "text": "\n\t\tif (daemon(0, 0)) {\n\t\t\tfprintf(stderr, \"Failed to daemonize!\\n\");\n\t\t\tfree(logfile);\n\t\t\treturn EXIT_FAILURE;\n"
+                  },
+                  "startLine": 263
+                },
+                "region": {
+                  "endColumn": 11,
+                  "startColumn": 4,
+                  "startLine": 265
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "4c042e42ba9c0b19:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 282,
+                  "snippet": {
+                    "text": "\t\tfd = open(logfile, O_WRONLY | O_CREAT | O_APPEND, 0600);\n\t\tif (fd \u003c 0) {\n\t\t\tfprintf(stderr, \"Failed to open output file %s\\n\",\n\t\t\t\tlogfile);\n\t\t\tfree(logfile);\n"
+                  },
+                  "startLine": 278
+                },
+                "region": {
+                  "endColumn": 11,
+                  "startColumn": 4,
+                  "startLine": 280
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "5e35b5c2237e4ec2:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 305,
+                  "snippet": {
+                    "text": "\t\tfd = open(outfile, O_WRONLY | O_CREAT | O_APPEND, 0600);\n\t\tif (fd \u003c 0) {\n\t\t\tfprintf(stderr, \"Failed to open output file %s\\n\",\n\t\t\t\toutfile);\n\n"
+                  },
+                  "startLine": 301
+                },
+                "region": {
+                  "endColumn": 11,
+                  "startColumn": 4,
+                  "startLine": 303
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "9116a74f9b0845f6:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 385,
+                  "snippet": {
+                    "text": "\tif (timeout \u003c 0) {\n\t\t// Used to test filesystem support for inotify/fanotify\n\t\tfprintf(stderr, \"Negative timeout specified - abort!\\n\");\n\t\treturn EXIT_FAILURE;\n\t}\n"
+                  },
+                  "startLine": 381
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 383
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "8bd92a2fc2c97c74:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 111,
+                  "snippet": {
+                    "text": "\t    (struct inotify_event*)malloc(sizeof(struct inotify_event) + 4);\n\tif (!event) {\n\t\tfprintf(stderr, \"Seem to be out of memory... yikes!\\n\");\n\t\texit(EXIT_FAILURE);\n\t}\n"
+                  },
+                  "startLine": 107
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 109
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "23b0498ce8753595:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 120,
+                  "snippet": {
+                    "text": "\tFILE* devnull = fopen(\"/dev/null\", \"a\");\n\tif (!devnull) {\n\t\tfprintf(stderr, \"Couldn't open /dev/null: %s\\n\",\n\t\t\tstrerror(errno));\n\t\tfree(event);\n"
+                  },
+                  "startLine": 116
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 118
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "7e04ba9743cffb19:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 0,
+                  "uri": "src/inotifywait.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 127,
+                  "snippet": {
+                    "text": "\n\tif (-1 == inotifytools_fprintf(devnull, event, fmt)) {\n\t\tfprintf(stderr,\n\t\t\t\"Something is wrong with your format string.\\n\");\n\t\tfree(event);\n"
+                  },
+                  "startLine": 123
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 125
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "db7f584ec9b924a4:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 1933,
+                  "snippet": {
+                    "text": "\t\tif (errno == ENOENT)\n\t\t\treturn 0;\n\t\tfprintf(stderr, \"Stat failed on %s: %s\\n\", path,\n\t\t\tstrerror(errno));\n\t\treturn 0;\n"
+                  },
+                  "startLine": 1929
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 1931
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "6fb08f1a43fa7bda:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 1592,
+                  "snippet": {
+                    "text": "\t}\n\tif (this_bytes == 0) {\n\t\tfprintf(stderr,\n\t\t\t\"Inotify reported end-of-file.  Possibly too many \"\n\t\t\t\"events occurred at once.\\n\");\n"
+                  },
+                  "startLine": 1588
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 1590
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "4e7a597b3c5e9ae:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 1648,
+                  "snippet": {
+                    "text": "\t\t}\n\t\tif (!fid) {\n\t\t\tfprintf(stderr, \"No fid in fanotify event.\\n\");\n\t\t\treturn NULL;\n\t\t}\n"
+                  },
+                  "startLine": 1644
+                },
+                "region": {
+                  "endColumn": 11,
+                  "startColumn": 4,
+                  "startLine": 1646
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "88dd753ea5762297:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 2,
+                  "uri": "src/common.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 231,
+                  "snippet": {
+                    "text": "bool is_timeout_option_valid(long* timeout, char* o) {\n\tif ((o == NULL) || (*o == '\\0')) {\n\t\tfprintf(stderr,\n\t\t\t\"The provided value is not a valid timeout value.\\n\"\n\t\t\t\"Please specify a long int value.\\n\");\n"
+                  },
+                  "startLine": 227
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 229
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "855b3d21e96a8218:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 2,
+                  "uri": "src/common.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 242,
+                  "snippet": {
+                    "text": "\n\tif (errno) {\n\t\tfprintf(stderr,\n\t\t\t\"Something went wrong with the timeout \"\n\t\t\t\"value you provided.\\n\");\n"
+                  },
+                  "startLine": 238
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 240
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "c3614d4025a37ec7:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 2,
+                  "uri": "src/common.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 245,
+                  "snippet": {
+                    "text": "\t\t\t\"Something went wrong with the timeout \"\n\t\t\t\"value you provided.\\n\");\n\t\tfprintf(stderr, \"%s\\n\", strerror(errno));\n\t\treturn false;\n\t}\n"
+                  },
+                  "startLine": 241
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 243
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "1712c2533e1e07c:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 2,
+                  "uri": "src/common.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 250,
+                  "snippet": {
+                    "text": "\n\tif (*timeout_end != '\\0') {\n\t\tfprintf(stderr,\n\t\t\t\"'%s' is not a valid timeout value.\\n\"\n\t\t\t\"Please specify a long int value.\\n\",\n"
+                  },
+                  "startLine": 246
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 248
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "709afcd166e22ae3:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 2,
+                  "uri": "src/common.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 211,
+                  "snippet": {
+                    "text": "\tint error = inotifytools_error();\n\n\tfprintf(stderr, \"Couldn't initialize %s: %s\\n\", backend,\n\t\tstrerror(error));\n\tif (error == EMFILE) {\n"
+                  },
+                  "startLine": 207
+                },
+                "region": {
+                  "endColumn": 9,
+                  "startColumn": 2,
+                  "startLine": 209
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "f8f0f1d8b03302d0:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 2,
+                  "uri": "src/common.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 214,
+                  "snippet": {
+                    "text": "\t\tstrerror(error));\n\tif (error == EMFILE) {\n\t\tfprintf(stderr,\n\t\t\t\"Try increasing the value of \"\n\t\t\t\"/proc/sys/fs/%s/max_user_%s\\n\",\n"
+                  },
+                  "startLine": 210
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 212
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "9236ed629f41f67a:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 1666,
+                  "snippet": {
+                    "text": "\t\t\t    (fanotify_event_fid*)calloc(1, info-\u003ehdr.len);\n\t\t\tif (!newfid) {\n\t\t\t\tfprintf(stderr, \"Failed to allocate fid.\\n\");\n\t\t\t\treturn NULL;\n\t\t\t}\n"
+                  },
+                  "startLine": 1662
+                },
+                "region": {
+                  "endColumn": 12,
+                  "startColumn": 5,
+                  "startLine": 1664
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "3cd22fb6689eaf80:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 2,
+                  "uri": "src/common.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 220,
+                  "snippet": {
+                    "text": "\t}\n\tif (fanotify \u0026\u0026 error == EINVAL) {\n\t\tfprintf(stderr,\n\t\t\t\"fanotify support for reporting the events with \"\n\t\t\t\"file names was added in kernel v5.9.\\n\");\n"
+                  },
+                  "startLine": 216
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 218
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "b61da5a0da94cfa0:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 2,
+                  "uri": "src/common.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 225,
+                  "snippet": {
+                    "text": "\t}\n\tif (fanotify \u0026\u0026 error == EPERM) {\n\t\tfprintf(stderr, \"fanotify watch requires admin privileges\\n\");\n\t}\n}\n"
+                  },
+                  "startLine": 221
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 223
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "50c4df4c34e4b2c9:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 2,
+                  "uri": "src/common.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 112,
+                  "snippet": {
+                    "text": "\t\t\tfile.is_stdin = true;\n\t\telse if (!file.open(filename)) {\n\t\t\tfprintf(stderr, \"Couldn't open %s: %s\\n\", filename,\n\t\t\t\tstrerror(errno));\n                        return;\n"
+                  },
+                  "startLine": 108
+                },
+                "region": {
+                  "endColumn": 11,
+                  "startColumn": 4,
+                  "startLine": 110
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "b9d91ee740fd5ea9:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 1299,
+                  "snippet": {
+                    "text": "\t\t\t}  // if ( wd == -1 )\n\t\t\telse {\n\t\t\t\tfprintf(\n\t\t\t\t    stderr,\n\t\t\t\t    \"Failed to watch %s: returned wd was %d \"\n"
+                  },
+                  "startLine": 1295
+                },
+                "region": {
+                  "endColumn": 12,
+                  "startColumn": 5,
+                  "startLine": 1297
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "9523f0bd6bd2556b:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 2,
+                  "uri": "src/common.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 51,
+                  "snippet": {
+                    "text": "\t\tif (errno == ENOENT)\n\t\t\treturn 0;\n\t\tfprintf(stderr, \"Stat failed on %s: %s\\n\", path,\n\t\t\tstrerror(errno));\n\t\treturn 0;\n"
+                  },
+                  "startLine": 47
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 49
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "6fb08f1a43fa7bda:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 1330,
+                  "snippet": {
+                    "text": "\t\t\t    1, sizeof(*fid) + MAX_FID_LEN);\n\t\t\tif (!fid) {\n\t\t\t\tfprintf(stderr, \"Failed to allocate fid\");\n\t\t\t\tfree(dirname);\n\t\t\t\treturn 0;\n"
+                  },
+                  "startLine": 1326
+                },
+                "region": {
+                  "endColumn": 12,
+                  "startColumn": 5,
+                  "startLine": 1328
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "e145d946acdb7e09:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 1338,
+                  "snippet": {
+                    "text": "\t\t\tif (statfs(filenames[i], \u0026buf)) {\n\t\t\t\tfree(fid);\n\t\t\t\tfprintf(stderr, \"Statfs failed on %s: %s\\n\",\n\t\t\t\t\tfilenames[i], strerror(errno));\n\t\t\t\tfree(dirname);\n"
+                  },
+                  "startLine": 1334
+                },
+                "region": {
+                  "endColumn": 12,
+                  "startColumn": 5,
+                  "startLine": 1336
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "a4317c0c7b1e2172:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 1356,
+                  "snippet": {
+                    "text": "\t\t\t\tif (!fsid) {\n\t\t\t\t\tfree(fid);\n\t\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\t\"Failed to allocate fsid\");\n\t\t\t\t\tfree(dirname);\n"
+                  },
+                  "startLine": 1352
+                },
+                "region": {
+                  "endColumn": 13,
+                  "startColumn": 6,
+                  "startLine": 1354
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "b2ffe1af9d286c7f:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 1370,
+                  "snippet": {
+                    "text": "\t\t\t\t\tfree(fid);\n\t\t\t\t\tfree(fsid);\n\t\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\t\"Failed to open %s: %s\\n\",\n\t\t\t\t\t\tdirname, strerror(errno));\n"
+                  },
+                  "startLine": 1366
+                },
+                "region": {
+                  "endColumn": 13,
+                  "startColumn": 6,
+                  "startLine": 1368
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "8431288d7259f036:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 1387,
+                  "snippet": {
+                    "text": "\t\t\tif (ret || fid-\u003ehandle.handle_bytes \u003e MAX_FID_LEN) {\n\t\t\t\tfree(fid);\n\t\t\t\tfprintf(stderr, \"Encode fid failed on %s: %s\\n\",\n\t\t\t\t\tfilenames[i], strerror(errno));\n\t\t\t\tfree(dirname);\n"
+                  },
+                  "startLine": 1383
+                },
+                "region": {
+                  "endColumn": 12,
+                  "startColumn": 5,
+                  "startLine": 1385
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "ff1cf308f22822ef:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 1401,
+                  "snippet": {
+                    "text": "\t\t\t\tif (dirf \u003c 0) {\n\t\t\t\t\tfree(fid);\n\t\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\t\"Failed to open %s: %s\\n\",\n\t\t\t\t\t\tdirname, strerror(errno));\n"
+                  },
+                  "startLine": 1397
+                },
+                "region": {
+                  "endColumn": 13,
+                  "startColumn": 6,
+                  "startLine": 1399
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "84321ea74200efec:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 1166,
+                  "snippet": {
+                    "text": "\twatch* w = (watch*)calloc(1, sizeof(watch));\n\tif (!w) {\n\t\tfprintf(stderr, \"Failed to allocate watch.\\n\");\n\t\treturn NULL;\n\t}\n"
+                  },
+                  "startLine": 1162
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 1164
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "b48a8d45e168587b:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 1146,
+                  "snippet": {
+                    "text": "\tint status = inotify_rm_watch(inotify_fd, w-\u003ewd);\n\tif (status \u003c 0) {\n\t\tfprintf(stderr, \"Failed to remove watch on %s: %s\\n\",\n\t\t\tw-\u003efilename, strerror(status));\n\t\terror = status;\n"
+                  },
+                  "startLine": 1142
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 1144
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "f8d91f4168efa461:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 841,
+                  "snippet": {
+                    "text": "\t\t// Got path by handle\n\t} else if (fanotify_mark_type == FAN_MARK_FILESYSTEM) {\n\t\tfprintf(stderr, \"Failed to decode directory fid.\\n\");\n\t\treturn NULL;\n\t} else if (name_len) {\n"
+                  },
+                  "startLine": 837
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 839
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "8c13391c9cd39325:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 854,
+                  "snippet": {
+                    "text": "\n\t\tif (!w) {\n\t\t\tfprintf(stderr,\n\t\t\t\t\"Failed to lookup path by directory fid.\\n\");\n\t\t\treturn NULL;\n"
+                  },
+                  "startLine": 850
+                },
+                "region": {
+                  "endColumn": 11,
+                  "startColumn": 4,
+                  "startLine": 852
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "f7aa4f189529f5b4:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 861,
+                  "snippet": {
+                    "text": "\t\tdirf = w-\u003edirf ? dup(w-\u003edirf) : -1;\n\t\tif (dirf \u003c 0) {\n\t\t\tfprintf(stderr, \"Failed to get directory fd.\\n\");\n\t\t\treturn NULL;\n\t\t}\n"
+                  },
+                  "startLine": 857
+                },
+                "region": {
+                  "endColumn": 11,
+                  "startColumn": 4,
+                  "startLine": 859
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "f336c3e84028aaa1:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 876,
+                  "snippet": {
+                    "text": "\tif (len \u003c 0) {\n\t\tclose(dirf);\n\t\tfprintf(stderr, \"Failed to resolve path from directory fd.\\n\");\n\t\treturn NULL;\n\t}\n"
+                  },
+                  "startLine": 872
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 874
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "4ce3572a00178219:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 888,
+                  "snippet": {
+                    "text": "\t\tint deleted = faccessat(dirf, name, F_OK, AT_SYMLINK_NOFOLLOW);\n\t\tif (deleted \u0026\u0026 errno != ENOENT) {\n\t\t\tfprintf(stderr, \"Failed to access file %s (%s).\\n\",\n\t\t\t\tname, strerror(errno));\n\t\t\tclose(dirf);\n"
+                  },
+                  "startLine": 884
+                },
+                "region": {
+                  "endColumn": 11,
+                  "startColumn": 4,
+                  "startLine": 886
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "b3779e78f647da75:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 240,
+                  "snippet": {
+                    "text": "\n\tif (mesg) {\n\t\tfprintf(stderr, \"%s:%d assertion ( %s ) failed: %s\\n\", file,\n\t\t\tline, condstr, mesg);\n\t} else {\n"
+                  },
+                  "startLine": 236
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 238
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "c795b9a671668f9c:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 1,
+                  "uri": "libinotifytools/src/inotifytools.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 243,
+                  "snippet": {
+                    "text": "\t\t\tline, condstr, mesg);\n\t} else {\n\t\tfprintf(stderr, \"%s:%d assertion ( %s ) failed.\\n\", file, line,\n\t\t\tcondstr);\n\t}\n"
+                  },
+                  "startLine": 239
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 241
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "c094356d9d61f5ae:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 575,
+                  "snippet": {
+                    "text": "\t\t\tcase 'o':\n\t\t\t\tif (*fromfile) {\n\t\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\t\"Multiple --fromfile options \"\n\t\t\t\t\t\t\"given.\\n\");\n"
+                  },
+                  "startLine": 571
+                },
+                "region": {
+                  "endColumn": 13,
+                  "startColumn": 6,
+                  "startLine": 573
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "7061d48f696c1817:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 597,
+                  "snippet": {
+                    "text": "\t\t\t\t// If optarg was invalid, abort\n\t\t\t\tif (new_event == -1) {\n\t\t\t\t\tfprintf(\n\t\t\t\t\t    stderr,\n\t\t\t\t\t    \"'%s' is not a valid event!  Run \"\n"
+                  },
+                  "startLine": 593
+                },
+                "region": {
+                  "endColumn": 13,
+                  "startColumn": 6,
+                  "startLine": 595
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "e9c6c9c5377115fb:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 616,
+                  "snippet": {
+                    "text": "\t\t\t\tassert(optarg);\n\t\t\t\tif (sort_set) {\n\t\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\t\"Please specify -a or -d once \"\n\t\t\t\t\t\t\"only!\\n\");\n"
+                  },
+                  "startLine": 612
+                },
+                "region": {
+                  "endColumn": 13,
+                  "startColumn": 6,
+                  "startLine": 614
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "6e9640c8c20d6378:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 625,
+                  "snippet": {
+                    "text": "\t\t\t\t\t(*s) = 0;\n\t\t\t\t} else if (0 == strcasecmp(optarg, \"move\")) {\n\t\t\t\t\tfprintf(\n\t\t\t\t\t    stderr,\n\t\t\t\t\t    \"Cannot sort by `move' event; \"\n"
+                  },
+                  "startLine": 621
+                },
+                "region": {
+                  "endColumn": 13,
+                  "startColumn": 6,
+                  "startLine": 623
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "3d0cffefa8a0f033:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 632,
+                  "snippet": {
+                    "text": "\t\t\t\t\treturn false;\n\t\t\t\t} else if (0 == strcasecmp(optarg, \"close\")) {\n\t\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\t\"Cannot sort by `close' event; \"\n\t\t\t\t\t\t\"please use \"\n"
+                  },
+                  "startLine": 628
+                },
+                "region": {
+                  "endColumn": 13,
+                  "startColumn": 6,
+                  "startLine": 630
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "68635d5d264f4521:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 644,
+                  "snippet": {
+                    "text": "\t\t\t\t\t// If optarg was invalid, abort\n\t\t\t\t\tif (event == -1) {\n\t\t\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\t\t\"'%s' is not a valid \"\n\t\t\t\t\t\t\t\"key for \"\n"
+                  },
+                  "startLine": 640
+                },
+                "region": {
+                  "endColumn": 14,
+                  "startColumn": 7,
+                  "startLine": 642
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "d3c58b99aa89b67f:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 661,
+                  "snippet": {
+                    "text": "\t\t\t\tassert(optarg);\n\t\t\t\tif (sort_set) {\n\t\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\t\"Please specify -a or -d once \"\n\t\t\t\t\t\t\"only!\\n\");\n"
+                  },
+                  "startLine": 657
+                },
+                "region": {
+                  "endColumn": 13,
+                  "startColumn": 6,
+                  "startLine": 659
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "6e9640c8c20d6378:2",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 675,
+                  "snippet": {
+                    "text": "\t\t\t\t\t// If optarg was invalid, abort\n\t\t\t\t\tif (event == -1) {\n\t\t\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\t\t\"'%s' is not a valid \"\n\t\t\t\t\t\t\t\"key for \"\n"
+                  },
+                  "startLine": 671
+                },
+                "region": {
+                  "endColumn": 14,
+                  "startColumn": 7,
+                  "startLine": 673
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "aeeef97b21330c49:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 697,
+                  "snippet": {
+                    "text": "\tif ((*s) != 0 \u0026\u0026 (*s) != -1 \u0026\u0026\n\t    !(abs(*s) \u0026 ((*e) ? (*e) : IN_ALL_EVENTS))) {\n\t\tfprintf(stderr,\n\t\t\t\"Can't sort by an event which isn't being watched \"\n\t\t\t\"for!\\n\");\n"
+                  },
+                  "startLine": 693
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 695
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "ebf44003c5ad171:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 704,
+                  "snippet": {
+                    "text": "\n\tif (*exc_regex \u0026\u0026 *exc_iregex) {\n\t\tfprintf(stderr,\n\t\t\t\"--exclude and --excludei cannot both be specified.\\n\");\n\t\treturn false;\n"
+                  },
+                  "startLine": 700
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 702
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "916d343d31cfb615:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 709,
+                  "snippet": {
+                    "text": "\t}\n\tif (*inc_regex \u0026\u0026 *inc_iregex) {\n\t\tfprintf(stderr,\n\t\t\t\"--include and --includei cannot both be specified.\\n\");\n\t\treturn false;\n"
+                  },
+                  "startLine": 705
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 707
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "f6ce6c5e231709eb:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 715,
+                  "snippet": {
+                    "text": "\tif ((*inc_regex \u0026\u0026 *exc_regex) || (*inc_regex \u0026\u0026 *exc_iregex) ||\n\t    (*inc_iregex \u0026\u0026 *exc_regex) || (*inc_iregex \u0026\u0026 *exc_iregex)) {\n\t\tfprintf(\n\t\t    stderr,\n\t\t    \"include and exclude regexp cannot both be specified.\\n\");\n"
+                  },
+                  "startLine": 711
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 713
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "5525000b4aa4abb5:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 334,
+                  "snippet": {
+                    "text": "int print_info() {\n\tif (!inotifytools_get_stat_total(0)) {\n\t\tfprintf(stderr, \"No events occurred.\\n\");\n\t\treturn EXIT_SUCCESS;\n\t}\n"
+                  },
+                  "startLine": 330
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 332
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "dce6824fa723d16c:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 123,
+                  "snippet": {
+                    "text": "\t    (exc_iregex \u0026\u0026 !inotifytools_ignore_events_by_regex(\n\t\t\t       exc_iregex, REG_EXTENDED | REG_ICASE, recursive))) {\n\t\tfprintf(stderr, \"Error in `exclude' regular expression.\\n\");\n\t\treturn EXIT_FAILURE;\n\t}\n"
+                  },
+                  "startLine": 119
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 121
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "eafc645172d2dea1:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 131,
+                  "snippet": {
+                    "text": "\t    (inc_iregex \u0026\u0026 !inotifytools_ignore_events_by_inverted_regex(\n\t\t\t       inc_iregex, REG_EXTENDED | REG_ICASE, recursive))) {\n\t\tfprintf(stderr, \"Error in `include' regular expression.\\n\");\n\t\treturn EXIT_FAILURE;\n\t}\n"
+                  },
+                  "startLine": 127
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 129
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "dffd0100e254dcd4:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 155,
+                  "snippet": {
+                    "text": "\n\tif (0 == list.watch_files_[0]) {\n\t\tfprintf(stderr, \"No files specified to watch!\\n\");\n\t\treturn EXIT_FAILURE;\n\t}\n"
+                  },
+                  "startLine": 151
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 153
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "4fe5b27b81632385:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 161,
+                  "snippet": {
+                    "text": "\tunsigned int num_watches = 0;\n\tunsigned int status;\n\tfprintf(stderr, \"Establishing watches...\\n\");\n\tfor (int i = 0; list.watch_files_[i]; ++i) {\n\t\tchar const* this_file = list.watch_files_[i];\n"
+                  },
+                  "startLine": 157
+                },
+                "region": {
+                  "endColumn": 9,
+                  "startColumn": 2,
+                  "startLine": 159
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "ae8d73588750528e:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 165,
+                  "snippet": {
+                    "text": "\t\tchar const* this_file = list.watch_files_[i];\n\t\tif (filesystem) {\n\t\t\tfprintf(stderr, \"Setting up filesystem watch on %s\\n\",\n\t\t\t\tthis_file);\n\t\t\tif (!inotifytools_watch_files(list.watch_files_,\n"
+                  },
+                  "startLine": 161
+                },
+                "region": {
+                  "endColumn": 11,
+                  "startColumn": 4,
+                  "startLine": 163
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "8087da995701ed32:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 169,
+                  "snippet": {
+                    "text": "\t\t\tif (!inotifytools_watch_files(list.watch_files_,\n\t\t\t\t\t\t      events)) {\n\t\t\t\tfprintf(\n\t\t\t\t    stderr,\n\t\t\t\t    \"Couldn't add filesystem watch %s: %s\\n\",\n"
+                  },
+                  "startLine": 165
+                },
+                "region": {
+                  "endColumn": 12,
+                  "startColumn": 5,
+                  "startLine": 167
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "9964da2d3a207289:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 179,
+                  "snippet": {
+                    "text": "\n\t\tif (recursive \u0026\u0026 verbose) {\n\t\t\tfprintf(stderr, \"Setting up watch(es) on %s\\n\",\n\t\t\t\tthis_file);\n\t\t}\n"
+                  },
+                  "startLine": 175
+                },
+                "region": {
+                  "endColumn": 11,
+                  "startColumn": 4,
+                  "startLine": 177
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "63ba8532c1377ddb:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 195,
+                  "snippet": {
+                    "text": "\t\t\t\tconst char* resource =\n\t\t\t\t    fanotify ? \"marks\" : \"watches\";\n\t\t\t\tfprintf(\n\t\t\t\t    stderr,\n\t\t\t\t    \"Failed to watch %s; upper limit on %s %s \"\n"
+                  },
+                  "startLine": 191
+                },
+                "region": {
+                  "endColumn": 12,
+                  "startColumn": 5,
+                  "startLine": 193
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "1cab1fab692a55aa:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 200,
+                  "snippet": {
+                    "text": "\t\t\t\t    \"reached!\\n\",\n\t\t\t\t    this_file, backend, resource);\n\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\"Please increase the amount of %s %s \"\n\t\t\t\t\t\"allowed per user via `/proc/sys/fs/%s/\"\n"
+                  },
+                  "startLine": 196
+                },
+                "region": {
+                  "endColumn": 12,
+                  "startColumn": 5,
+                  "startLine": 198
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "3cf0ad5b5aa1c958:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 206,
+                  "snippet": {
+                    "text": "\t\t\t\t\tbackend, resource, backend, resource);\n\t\t\t} else {\n\t\t\t\tfprintf(stderr, \"Failed to watch %s: %s\\n\",\n\t\t\t\t\tthis_file,\n\t\t\t\t\tstrerror(inotifytools_error()));\n"
+                  },
+                  "startLine": 202
+                },
+                "region": {
+                  "endColumn": 12,
+                  "startColumn": 5,
+                  "startLine": 204
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "a3a8e177d9a03334:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 214,
+                  "snippet": {
+                    "text": "\t\t}\n\t\tif (recursive \u0026\u0026 verbose) {\n\t\t\tfprintf(stderr, \"OK, %s is now being watched.\\n\",\n\t\t\t\tthis_file);\n\t\t}\n"
+                  },
+                  "startLine": 210
+                },
+                "region": {
+                  "endColumn": 11,
+                  "startColumn": 4,
+                  "startLine": 212
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "54d555e323c081b7:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 221,
+                  "snippet": {
+                    "text": "\n\tif (verbose) {\n\t\tfprintf(stderr, \"Total of %u watches.\\n\", num_watches);\n\t}\n\tfprintf(stderr,\n"
+                  },
+                  "startLine": 217
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 219
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "b9309102cca00c96:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 223,
+                  "snippet": {
+                    "text": "\t\tfprintf(stderr, \"Total of %u watches.\\n\", num_watches);\n\t}\n\tfprintf(stderr,\n\t\t\"Finished establishing watches, now collecting statistics.\\n\");\n\n"
+                  },
+                  "startLine": 219
+                },
+                "region": {
+                  "endColumn": 9,
+                  "startColumn": 2,
+                  "startLine": 221
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "fc344ca091b27756:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 228,
+                  "snippet": {
+                    "text": "\tif (timeout \u003c 0) {\n\t\t// Used to test filesystem support for inotify/fanotify\n\t\tfprintf(stderr, \"Negative timeout specified - abort!\\n\");\n\t\treturn EXIT_FAILURE;\n\t}\n"
+                  },
+                  "startLine": 224
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 226
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "d2e53ed84f44b2d8:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 232,
+                  "snippet": {
+                    "text": "\t}\n\tif (timeout \u0026\u0026 verbose) {\n\t\tfprintf(stderr, \"Will listen for events for %lu seconds.\\n\",\n\t\t\ttimeout);\n\t}\n"
+                  },
+                  "startLine": 228
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 230
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "9a7235ed50fba40a:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 259,
+                  "snippet": {
+                    "text": "\t\t\t\treturn EXIT_TIMEOUT;\n\t\t\t} else if (inotifytools_error() != EINTR) {\n\t\t\t\tfprintf(stderr, \"%s\\n\",\n\t\t\t\t\tstrerror(inotifytools_error()));\n\n"
+                  },
+                  "startLine": 255
+                },
+                "region": {
+                  "endColumn": 12,
+                  "startColumn": 5,
+                  "startLine": 257
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "29f8a6dab1ec7f78:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 278,
+                  "snippet": {
+                    "text": "\t\t\tif (!inotifytools_remove_watch_by_filename(\n\t\t\t\tmoved_from)) {\n\t\t\t\tfprintf(\n\t\t\t\t    stderr, \"Error removing watch on %s: %s\\n\",\n\t\t\t\t    moved_from, strerror(inotifytools_error()));\n"
+                  },
+                  "startLine": 274
+                },
+                "region": {
+                  "endColumn": 12,
+                  "startColumn": 5,
+                  "startLine": 276
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "8d59133761cdad70:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 295,
+                  "snippet": {
+                    "text": "\t\t\t\t    !inotifytools_watch_recursively(new_file,\n\t\t\t\t\t\t\t\t    events)) {\n\t\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\t\"Couldn't watch new directory \"\n\t\t\t\t\t\t\"%s: %s\\n\",\n"
+                  },
+                  "startLine": 291
+                },
+                "region": {
+                  "endColumn": 13,
+                  "startColumn": 6,
+                  "startLine": 293
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "fc521f2638cc03ea:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 57,
+                  "snippet": {
+                    "text": "\tstatic int times_called = 0;\n\tif (times_called) {\n\t\tfprintf(stderr,\n\t\t\t\"No statistics collected, asked to abort before all \"\n\t\t\t\"watches could be established.\\n\");\n"
+                  },
+                  "startLine": 53
+                },
+                "region": {
+                  "endColumn": 10,
+                  "startColumn": 3,
+                  "startLine": 55
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "54025751f66535cb:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": 3,
+                  "uri": "src/inotifywatch.cpp",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "contextRegion": {
+                  "endLine": 63,
+                  "snippet": {
+                    "text": "\t}\n\n\tfprintf(stderr,\n\t\t\"No statistics have been collected because I haven't \"\n\t\t\"finished establishing\\n\"\n"
+                  },
+                  "startLine": 59
+                },
+                "region": {
+                  "endColumn": 9,
+                  "startColumn": 2,
+                  "startLine": 61
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "call of fprintf"
+          },
+          "partialFingerprints": {
+            "primaryLocationLineHash": "1e35659d0f0b224a:1",
+            "primaryLocationStartColumnFingerprint": "0"
+          },
+          "rule": {
+            "id": "cpp-fprintf-call",
+            "index": 0
+          },
+          "ruleId": "cpp-fprintf-call",
+          "ruleIndex": 0
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "CodeQL",
+          "notifications": [
+            {
+              "defaultConfiguration": {
+                "enabled": true
+              },
+              "fullDescription": {
+                "text": "Files appearing in the source archive that are expected to be extracted."
+              },
+              "id": "cpp/baseline/expected-extracted-files",
+              "name": "cpp/baseline/expected-extracted-files",
+              "properties": {
+                "tags": [
+                  "expected-extracted-files",
+                  "telemetry"
+                ]
+              },
+              "shortDescription": {
+                "text": "Expected extracted files"
+              }
+            }
+          ],
+          "organization": "GitHub",
+          "rules": [
+            {
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "fullDescription": {
+                "text": "Find calls to plain fprintf"
+              },
+              "id": "cpp-fprintf-call",
+              "name": "cpp-fprintf-call",
+              "properties": {
+                "description": "Find calls to plain fprintf",
+                "id": "cpp-fprintf-call",
+                "kind": "problem",
+                "name": "findPrintf",
+                "problem.severity": "warning"
+              },
+              "shortDescription": {
+                "text": "findPrintf"
+              }
+            }
+          ],
+          "semanticVersion": "2.23.8"
+        },
+        "extensions": [
+          {
+            "locations": [
+              {
+                "description": {
+                  "text": "The QL pack root directory."
+                },
+                "properties": {
+                  "tags": [
+                    "CodeQL/LocalPackRoot"
+                  ]
+                },
+                "uri": "file:///tmp/81caba43-b8d6-425a-bec1-36e25fd306cf/pack/"
+              },
+              {
+                "description": {
+                  "text": "The QL pack definition file."
+                },
+                "properties": {
+                  "tags": [
+                    "CodeQL/LocalPackDefinitionFile"
+                  ]
+                },
+                "uri": "file:///tmp/81caba43-b8d6-425a-bec1-36e25fd306cf/pack/qlpack.yml"
+              }
+            ],
+            "name": "codeql-remote/query",
+            "semanticVersion": "0.0.0"
+          },
+          {
+            "locations": [
+              {
+                "description": {
+                  "text": "The QL pack root directory."
+                },
+                "properties": {
+                  "tags": [
+                    "CodeQL/LocalPackRoot"
+                  ]
+                },
+                "uri": "file:///tmp/81caba43-b8d6-425a-bec1-36e25fd306cf/pack/.codeql/libraries/codeql/cpp-all/7.1.1/"
+              },
+              {
+                "description": {
+                  "text": "The QL pack definition file."
+                },
+                "properties": {
+                  "tags": [
+                    "CodeQL/LocalPackDefinitionFile"
+                  ]
+                },
+                "uri": "file:///tmp/81caba43-b8d6-425a-bec1-36e25fd306cf/pack/.codeql/libraries/codeql/cpp-all/7.1.1/qlpack.yml"
+              }
+            ],
+            "name": "codeql/cpp-all",
+            "semanticVersion": "7.1.1+fb67f93a86689e46c2d932ea2371b684b31f379e"
+          }
+        ]
+      }
+    }
+  ],
+  "version": "2.1.0"
+}
